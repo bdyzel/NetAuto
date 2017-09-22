@@ -1,0 +1,4 @@
+---
+   hostname: RT01
+   loopback: 192.168.11.1
+   maxint: 2

@@ -1,0 +1,11 @@
+---
+  -  bgp_peer_desc: Vendor A
+     bgp_peer_ip: 10.1.1.1
+     bgp_as: 15001
+     bgp_state: active
+     bgp_policy_in: RM_EDGE_IN
+     bgp_policy_out: RM_EDGE_OUT
+     
+  -  bgp_peer_ip: 10.1.16.1
+     bgp_peer_desc: Vendor B
+     bgp_as: 15001
