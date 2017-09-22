@@ -13,3 +13,5 @@ The easier part(I hope), will be the initial deployment of the routers by using 
 
 Until I can figure out how to run a FortiVM image on Virtual box the idea to also run the Fortigate in the GNS3 environment is still a cloud dream, pardon the pun.
 A substitute Firewall may still present itself in order to test a REST API deployment or change automation.
+
+![Lab Diagram](https://github.com/bdyzel/NetAuto/blob/master/Lab%20Layout.png?raw=true "Optional Title")
