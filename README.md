@@ -7,9 +7,9 @@ Run from an Ubuntu Vagrant install done on Virtual box by following Ivan Pepelnj
 
 The lab:
 A loopback connection which resides directly on Windows routes traffic from the Vagrant box to the rest of the GNS3 virtual environment which contains Cisco 7200 Series IOS Routers. The idea is to swop out one of the routers at a later stage with a XRV CSR1000, see related URL to run the XRV on Virtual Box (http://blog.alexolivan.com/cisco-csr1000-on-oracle-virtualbox-5-1/).
-With the swop out I would like to automate the process in order to automatically deploy as much of the configuration from the IOS router to the XRV router.
+With the swap out I would like to automate the process in order to automatically deploy as much of the configuration from the IOS router to the XRV router.
 
 The easier part(I hope), will be the initial deployment of the routers by using ansible playbooks which will serve as a familiarization process.
 
-Until I can figure out how to run a FortiVM image on Virtual box the idea to also run the Fortigate in the GNS3 environment is still a cloud dream, pardon the punn.
+Until I can figure out how to run a FortiVM image on Virtual box the idea to also run the Fortigate in the GNS3 environment is still a cloud dream, pardon the pun.
 A substitute Firewall may still present itself in order to test a REST API deployment or change automation.
