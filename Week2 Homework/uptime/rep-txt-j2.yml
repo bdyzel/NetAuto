@@ -1,0 +1,8 @@
+#
+# This module creates uptime.log text file from a Jinja2 template based on information collected with snmp_facts
+#
+---
+- template: src="uptime-txt.j2" dest="{{results}}/uptime.log"
+  vars:
+    allhosts: "{{hostvars}}"
+  run_once: true

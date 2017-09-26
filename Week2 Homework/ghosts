@@ -1,0 +1,27 @@
+[edge]
+172.16.254.254 location=EDGE1
+
+[isp1]
+172.16.1.3 location=ISP1
+
+[isp2]
+172.16.2.3 location=ISP2
+
+[simint]
+10.0.0.1 location=SIM
+
+[edge:vars]
+ansible_user=sshedge
+ansible_ssh_pass=sshkey1
+
+[isp1:vars]
+ansible_user=sshisp1
+ansible_ssh_pass=ispkey1
+
+[isp2:vars]
+ansible_user=sshisp2
+ansible_ssh_pass=ispkey2
+
+[simint:vars]
+ansible_user=sshsim
+ansible_ssh_pass=simkey2
