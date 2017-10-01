@@ -21,7 +21,7 @@
     register: bgproutesvrf
     when: vrf_var !=""
   - copy:
-      content: "{{ bgproutesvrf.stdout_lines[0] }}"
+      content: "{{ bgproutesvrf.stdout[0] }}"
       dest: './BGP_Routes/BGPRoutes_{{ inventory_hostname }}.log'
     when: vrf_var !=""
 
@@ -38,6 +38,6 @@
     when: vrf_var ==""
 #  - debug: var=bgproutes
   - copy:
-      content: "{{ bgproutes.stdout_lines[0] }}"
+      content: "{{ bgproutes.stdout[0] }}"
       dest: './BGP_Routes/BGPRoutes_{{ inventory_hostname }}.log'
     when: vrf_var ==""
