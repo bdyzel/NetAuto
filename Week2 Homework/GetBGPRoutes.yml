@@ -13,38 +13,31 @@
   gather_facts: false
   connection: local
   name:  Show VRF BGP Routes
-#  tags:  BGPRTS
   tasks:
   - ios_command:
       commands:
-        - "sho ip bgp vpnv4 vrf {{vrf_var}}"
-        - "sho ip bgp vpnv4 vrf {{vrf_var}} summary"
-    register: bgproutes
-    with_items: "{{ inventory_hostname }}"
-    when: "{{ vrf_var is defined }}"
-#  - debug: var=bgproutes
+        - "sho ip bgp vpnv4 vrf {{vrf_var}} | beg Network"
+        - "sho ip bgp vpnv4 vrf {{vrf_var}} summary | beg Neighbor"
+    register: bgproutesvrf
+    when: vrf_var !=""
+  - copy:
+      content: "{{ bgproutesvrf.stdout_lines[0] }}"
+      dest: './BGP_Routes/BGPRoutes_{{ inventory_hostname }}.log'
+    when: vrf_var !=""
 
 - hosts: all
   gather_facts: false
   connection: local
   name:  Show BGP Routes
-#  tags:  BGPRTS
   tasks:
   - ios_command:
       commands:
-        - "sho ip bgp"
-        - "sho ip bgp summary"
+        - "sho ip bgp | beg Network"
+        - "sho ip bgp summary | beg Neighbor"
     register: bgproutes
-    with_items: "{{ inventory_hostname }}"
-    when: "{{ vrf_var is not defined }}"
+    when: vrf_var ==""
 #  - debug: var=bgproutes
-
-- hosts: all
-  gather_facts: false
-  connection: local
-#  tags:  BGPRTS
-  tasks:
-  - name: Save Output to /BGP_Routes
-    copy:
-      content: "{{ bgproutes.stdout[0] }}"
-      dest: './BGP_Routes/BGPRoutes_{{ inventory_hostname }}.txt'
+  - copy:
+      content: "{{ bgproutes.stdout_lines[0] }}"
+      dest: './BGP_Routes/BGPRoutes_{{ inventory_hostname }}.log'
+    when: vrf_var ==""
