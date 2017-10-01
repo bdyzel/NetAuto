@@ -1,0 +1,61 @@
+ansible_facts:
+    ansible_all_ipv4_addresses:
+    - 172.16.3.3
+    - 172.16.3.254
+    - 172.16.230.3
+    ansible_interfaces:
+        '1':
+            adminstatus: up
+            description: ''
+            ifindex: '1'
+            ipv4:
+            -   address: 172.16.3.3
+                netmask: 255.255.255.254
+            mac: 080027119e5b
+            mtu: '1500'
+            name: GigabitEthernet1
+            operstatus: up
+            speed: '1500'
+        '2':
+            adminstatus: up
+            description: ''
+            ifindex: '2'
+            ipv4:
+            -   address: 172.16.230.3
+                netmask: 255.255.255.254
+            mac: 080027daf25c
+            mtu: '1500'
+            name: GigabitEthernet2
+            operstatus: up
+            speed: '1500'
+        '3':
+            adminstatus: up
+            description: ''
+            ifindex: '3'
+            mac: ''
+            mtu: '1500'
+            name: Null0
+            operstatus: up
+            speed: '1500'
+        '4':
+            adminstatus: up
+            description: ''
+            ifindex: '4'
+            ipv4:
+            -   address: 172.16.3.254
+                netmask: 255.255.255.255
+            mac: ''
+            mtu: '1514'
+            name: Loopback0
+            operstatus: up
+            speed: '1514'
+    ansible_syscontact: ''
+    ansible_sysdescr: "Cisco IOS Software, CSR1000V Software (X86_64_LINUX_IOSD-UNIVERSALK9-M),\
+        \ Version 15.4(1)S2, RELEASE SOFTWARE (fc3)\r\nTechnical Support: http://www.cisco.com/techsupport\r\
+        \nCopyright (c) 1986-2014 by Cisco Systems, Inc.\r\nCompiled Tue 27-May-14\
+        \ 10:11 by mcpre"
+    ansible_syslocation: ''
+    ansible_sysname: ISP3.myansibletest.lab
+    ansible_sysobjectid: 1.3.6.1.4.1.9.1.1537
+    ansible_sysuptime: '134200'
+changed: false

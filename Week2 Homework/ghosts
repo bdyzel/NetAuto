@@ -7,6 +7,9 @@
 [isp2]
 172.16.2.3 location=ISP2
 
+[isp3]
+172.16.3.3 location=ISP3
+
 [simint]
 10.0.0.1 location=SIM
 
@@ -21,6 +24,10 @@ ansible_ssh_pass=ispkey1
 [isp2:vars]
 ansible_user=sshisp2
 ansible_ssh_pass=ispkey2
+
+[isp3:vars]
+ansible_user=sshisp3
+ansible_ssh_pass=ispkey3
 
 [simint:vars]
 ansible_user=sshsim

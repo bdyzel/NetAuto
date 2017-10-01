@@ -1,0 +1,41 @@
+#
+# Get SNMP from all devices and write to Yaml files.
+#
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+  vars:
+  - results: results
+
+  tasks:
+  - file: path={{results}} state=directory
+    run_once: true
+  - file: path={{results}}/uptime.log state=touch
+    run_once: true
+  - name: Get SNMP Facts
+    snmp_facts:
+      host: "{{ inventory_hostname }}"
+      version: v2
+      community: autolab
+    register: snmpfacts
+
+  - name: Get IOS Facts
+    ios_facts:
+      gather_subset: all
+    register: iosfacts
+
+  - name: Save SNMP_Facts to YML files
+    copy:
+      content: "{{snmpfacts|to_nice_yaml(indent=4)}}"
+      dest: './SNMP_Data/SNMPFacts_{{inventory_hostname}}.yml'
+
+  - name: Save IOS_Facts to YML files
+    copy:
+      content: "{{iosfacts|to_nice_yaml(indent=4)}}"
+      dest: './IOS_Data/IOSFacts_{{inventory_hostname}}.yml'
+
+  - lineinfile:
+      dest:   "{{results}}/uptime.log"
+      regexp: "{{inventory_hostname}}"
+      line:   "{{'%20s %8s'|format(inventory_hostname,ansible_sysuptime)}}"

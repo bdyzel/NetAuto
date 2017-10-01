@@ -1,0 +1,50 @@
+#
+# Get detailed BGP route report
+#
+---
+- include: VRFCheck.yml
+  name:    Get VRF Name
+
+- hosts: all
+  gather_facts: false
+  connection: local
+
+- hosts: all
+  gather_facts: false
+  connection: local
+  name:  Show VRF BGP Routes
+#  tags:  BGPRTS
+  tasks:
+  - ios_command:
+      commands:
+        - "sho ip bgp vpnv4 vrf {{vrf_var}}"
+        - "sho ip bgp vpnv4 vrf {{vrf_var}} summary"
+    register: bgproutes
+    with_items: "{{ inventory_hostname }}"
+    when: "{{ vrf_var is defined }}"
+#  - debug: var=bgproutes
+
+- hosts: all
+  gather_facts: false
+  connection: local
+  name:  Show BGP Routes
+#  tags:  BGPRTS
+  tasks:
+  - ios_command:
+      commands:
+        - "sho ip bgp"
+        - "sho ip bgp summary"
+    register: bgproutes
+    with_items: "{{ inventory_hostname }}"
+    when: "{{ vrf_var is not defined }}"
+#  - debug: var=bgproutes
+
+- hosts: all
+  gather_facts: false
+  connection: local
+#  tags:  BGPRTS
+  tasks:
+  - name: Save Output to /BGP_Routes
+    copy:
+      content: "{{ bgproutes.stdout[0] }}"
+      dest: './BGP_Routes/BGPRoutes_{{ inventory_hostname }}.txt'

@@ -1,0 +1,722 @@
+Week2 Homework$ ansible-playbook GetBGPRoutes.yml -vvv
+Using /vagrant/NetOpsWorkshop/Ansible/Week2 Homework/ansible.cfg as config file
+
+PLAYBOOK: GetBGPRoutes.yml *************************************************************************************
+5 plays in GetBGPRoutes.yml
+
+PLAY [all] *****************************************************************************************************
+META: ran handlers
+
+TASK [ios_command] *********************************************************************************************
+task path: /vagrant/NetOpsWorkshop/Ansible/Week2 Homework/VRFCheck.yml:11
+<172.16.1.3> using connection plugin network_cli
+<172.16.2.3> using connection plugin network_cli
+<172.16.3.3> using connection plugin network_cli
+<172.16.254.254> using connection plugin network_cli
+<10.0.0.1> using connection plugin network_cli
+Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/network/ios/ios_command.py
+Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/network/ios/ios_command.py
+Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/network/ios/ios_command.py
+Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/network/ios/ios_command.py
+<172.16.2.3> ESTABLISH LOCAL CONNECTION FOR USER: vagrant
+<172.16.3.3> ESTABLISH LOCAL CONNECTION FOR USER: vagrant
+<172.16.3.3> EXEC /bin/sh -c 'echo ~ && sleep 0'
+<172.16.254.254> ESTABLISH LOCAL CONNECTION FOR USER: vagrant
+<172.16.254.254> EXEC /bin/sh -c 'echo ~ && sleep 0'
+<172.16.2.3> EXEC /bin/sh -c 'echo ~ && sleep 0'
+<10.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: vagrant
+<10.0.0.1> EXEC /bin/sh -c 'echo ~ && sleep 0'
+Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/network/ios/ios_command.py
+<172.16.1.3> ESTABLISH LOCAL CONNECTION FOR USER: vagrant
+<172.16.1.3> EXEC /bin/sh -c 'echo ~ && sleep 0'
+<172.16.3.3> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-162040788957158 `" && echo ansible-tmp-1506799377.28-162040788957158="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-162040788957158 `" ) && sleep 0'
+<172.16.2.3> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-139692038065724 `" && echo ansible-tmp-1506799377.28-139692038065724="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-139692038065724 `" ) && sleep 0'
+<172.16.254.254> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-67428984345746 `" && echo ansible-tmp-1506799377.28-67428984345746="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-67428984345746 `" ) && sleep 0'
+<10.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-240154595512090 `" && echo ansible-tmp-1506799377.28-240154595512090="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-240154595512090 `" ) && sleep 0'
+<172.16.1.3> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.29-145324159197413 `" && echo ansible-tmp-1506799377.29-145324159197413="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.29-145324159197413 `" ) && sleep 0'
+<172.16.2.3> PUT /tmp/tmp33XpIu TO /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-139692038065724/ios_command.py
+<172.16.3.3> PUT /tmp/tmpv5IdpV TO /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-162040788957158/ios_command.py
+<172.16.3.3> EXEC /bin/sh -c 'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-162040788957158/ /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-162040788957158/ios_command.py && sleep 0'
+<172.16.2.3> EXEC /bin/sh -c 'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-139692038065724/ /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-139692038065724/ios_command.py && sleep 0'
+<172.16.254.254> PUT /tmp/tmpblhrjB TO /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-67428984345746/ios_command.py
+<172.16.254.254> EXEC /bin/sh -c 'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-67428984345746/ /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-67428984345746/ios_command.py && sleep 0'
+<10.0.0.1> PUT /tmp/tmp1b0R91 TO /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-240154595512090/ios_command.py
+<10.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-240154595512090/ /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-240154595512090/ios_command.py && sleep 0'
+<172.16.1.3> PUT /tmp/tmp7H9GmM TO /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.29-145324159197413/ios_command.py
+<172.16.1.3> EXEC /bin/sh -c 'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.29-145324159197413/ /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.29-145324159197413/ios_command.py && sleep 0'
+<172.16.254.254> EXEC /bin/sh -c '/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-67428984345746/ios_command.py; rm -rf "/home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-67428984345746/" > /dev/null 2>&1 && sleep 0'
+<172.16.3.3> EXEC /bin/sh -c '/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-162040788957158/ios_command.py; rm -rf "/home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-162040788957158/" > /dev/null 2>&1 && sleep 0'
+<172.16.2.3> EXEC /bin/sh -c '/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-139692038065724/ios_command.py; rm -rf "/home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-139692038065724/" > /dev/null 2>&1 && sleep 0'
+<10.0.0.1> EXEC /bin/sh -c '/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-240154595512090/ios_command.py; rm -rf "/home/vagrant/.ansible/tmp/ansible-tmp-1506799377.28-240154595512090/" > /dev/null 2>&1 && sleep 0'
+<172.16.1.3> EXEC /bin/sh -c '/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1506799377.29-145324159197413/ios_command.py; rm -rf "/home/vagrant/.ansible/tmp/ansible-tmp-1506799377.29-145324159197413/" > /dev/null 2>&1 && sleep 0'
+ok: [172.16.3.3] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "auth_pass": null,
+            "authorize": null,
+            "commands": [
+                "show run vrf | inc ^ip vrf "
+            ],
+            "host": null,
+            "interval": 1,
+            "match": "all",
+            "password": null,
+            "port": null,
+            "provider": null,
+            "retries": 10,
+            "ssh_keyfile": null,
+            "timeout": null,
+            "username": null,
+            "wait_for": null
+        }
+    },
+    "stdout": [
+        "rf ISP3) VRF Router ID 172.16.230.3\n *>  10.0.0.1/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *>  10.0.0.2/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *>  10.0.0.3/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *>  10.0.0.4/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *   172.16.0.0/24    172.16.230.2                           0 65004 65002 i\n *                    172.16.3.2               0             0 65001 ?\n *>                   172.16.3.2               0         32768 i\n *   172.16.1.2/31    172.16.230.2                           0 65004 65002 ?\n *>                   172.16.3.2               0             0 65001 ?\n *>  172.16.1.254/32  172.16.230.2                           0 65004 65002 ?\n *                    172.16.3.2                             0 65001 65002 ?\n *   172.16.2.2/31    172.16.230.2                           0 65004 65003 ?\n *>                   172.16.3.2               0             0 65001 ?\n *>  172.16.2.254/32  172.16.230.2                           0 65004 65003 ?\n *                    172.16.3.2                             0 65001 65003 ?\n *   172.16.3.2/31    172.16.3.2               0             0 65001 ?\n *>                   0.0.0.0                  0         32768 ?\n *   172.16.230.2/31  172.16.230.2             0             0 65004 ?\n *>                   0.0.0.0                  0         32768 ?\n *>  172.16.240.2/31  172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65003 ?\n *>  172.16.250.2/31  172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 ?\n *   172.16.254.254/32\n                       172.16.230.2                           0 65004 65003 65001 ?\n *>                   172.16.3.2               0             0 65001 ?"
+    ],
+    "stdout_lines": [
+        [
+            "rf ISP3) VRF Router ID 172.16.230.3",
+            " *>  10.0.0.1/32      172.16.230.2             0             0 65004 ?",
+            " *                    172.16.3.2                             0 65001 65002 65004 ?",
+            " *>  10.0.0.2/32      172.16.230.2             0             0 65004 ?",
+            " *                    172.16.3.2                             0 65001 65002 65004 ?",
+            " *>  10.0.0.3/32      172.16.230.2             0             0 65004 ?",
+            " *                    172.16.3.2                             0 65001 65002 65004 ?",
+            " *>  10.0.0.4/32      172.16.230.2             0             0 65004 ?",
+            " *                    172.16.3.2                             0 65001 65002 65004 ?",
+            " *   172.16.0.0/24    172.16.230.2                           0 65004 65002 i",
+            " *                    172.16.3.2               0             0 65001 ?",
+            " *>                   172.16.3.2               0         32768 i",
+            " *   172.16.1.2/31    172.16.230.2                           0 65004 65002 ?",
+            " *>                   172.16.3.2               0             0 65001 ?",
+            " *>  172.16.1.254/32  172.16.230.2                           0 65004 65002 ?",
+            " *                    172.16.3.2                             0 65001 65002 ?",
+            " *   172.16.2.2/31    172.16.230.2                           0 65004 65003 ?",
+            " *>                   172.16.3.2               0             0 65001 ?",
+            " *>  172.16.2.254/32  172.16.230.2                           0 65004 65003 ?",
+            " *                    172.16.3.2                             0 65001 65003 ?",
+            " *   172.16.3.2/31    172.16.3.2               0             0 65001 ?",
+            " *>                   0.0.0.0                  0         32768 ?",
+            " *   172.16.230.2/31  172.16.230.2             0             0 65004 ?",
+            " *>                   0.0.0.0                  0         32768 ?",
+            " *>  172.16.240.2/31  172.16.230.2             0             0 65004 ?",
+            " *                    172.16.3.2                             0 65001 65003 ?",
+            " *>  172.16.250.2/31  172.16.230.2             0             0 65004 ?",
+            " *                    172.16.3.2                             0 65001 65002 ?",
+            " *   172.16.254.254/32",
+            "                       172.16.230.2                           0 65004 65003 65001 ?",
+            " *>                   172.16.3.2               0             0 65001 ?"
+        ]
+    ]
+}
+ok: [10.0.0.1] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "auth_pass": null,
+            "authorize": null,
+            "commands": [
+                "show run vrf | inc ^ip vrf "
+            ],
+            "host": null,
+            "interval": 1,
+            "match": "all",
+            "password": null,
+            "port": null,
+            "provider": null,
+            "retries": 10,
+            "ssh_keyfile": null,
+            "timeout": null,
+            "username": null,
+            "wait_for": null
+        }
+    },
+    "stdout": [
+        ""
+    ],
+    "stdout_lines": [
+        [
+            ""
+        ]
+    ]
+}
+ok: [172.16.2.3] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "auth_pass": null,
+            "authorize": null,
+            "commands": [
+                "show run vrf | inc ^ip vrf "
+            ],
+            "host": null,
+            "interval": 1,
+            "match": "all",
+            "password": null,
+            "port": null,
+            "provider": null,
+            "retries": 10,
+            "ssh_keyfile": null,
+            "timeout": null,
+            "username": null,
+            "wait_for": null
+        }
+    },
+    "stdout": [
+        "ip vrf ISP2"
+    ],
+    "stdout_lines": [
+        [
+            "ip vrf ISP2"
+        ]
+    ]
+}
+ok: [172.16.254.254] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "auth_pass": null,
+            "authorize": null,
+            "commands": [
+                "show run vrf | inc ^ip vrf "
+            ],
+            "host": null,
+            "interval": 1,
+            "match": "all",
+            "password": null,
+            "port": null,
+            "provider": null,
+            "retries": 10,
+            "ssh_keyfile": null,
+            "timeout": null,
+            "username": null,
+            "wait_for": null
+        }
+    },
+    "stdout": [
+        "ip vrf EDGE"
+    ],
+    "stdout_lines": [
+        [
+            "ip vrf EDGE"
+        ]
+    ]
+}
+ok: [172.16.1.3] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "auth_pass": null,
+            "authorize": null,
+            "commands": [
+                "show run vrf | inc ^ip vrf "
+            ],
+            "host": null,
+            "interval": 1,
+            "match": "all",
+            "password": null,
+            "port": null,
+            "provider": null,
+            "retries": 10,
+            "ssh_keyfile": null,
+            "timeout": null,
+            "username": null,
+            "wait_for": null
+        }
+    },
+    "stdout": [
+        "ip vrf ISP1"
+    ],
+    "stdout_lines": [
+        [
+            "ip vrf ISP1"
+        ]
+    ]
+}
+
+TASK [set_fact] ************************************************************************************************
+task path: /vagrant/NetOpsWorkshop/Ansible/Week2 Homework/VRFCheck.yml:15
+ok: [172.16.2.3] => {
+    "ansible_facts": {
+        "vrf_var": "ISP2"
+    },
+    "changed": false
+}
+ok: [172.16.1.3] => {
+    "ansible_facts": {
+        "vrf_var": "ISP1"
+    },
+    "changed": false
+}
+ok: [172.16.3.3] => {
+    "ansible_facts": {
+        "vrf_var": "rf ISP3) VRF Router ID 172.16.230.3\n *>  10.0.0.1/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *>  10.0.0.2/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *>  10.0.0.3/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *>  10.0.0.4/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *   172.16.0.0/24    172.16.230.2                           0 65004 65002 i\n *                    172.16.3.2               0             0 65001 ?\n *>                   172.16.3.2               0         32768 i\n *   172.16.1.2/31    172.16.230.2                           0 65004 65002 ?\n *>                   172.16.3.2               0             0 65001 ?\n *>  172.16.1.254/32  172.16.230.2                           0 65004 65002 ?\n *                    172.16.3.2                             0 65001 65002 ?\n *   172.16.2.2/31    172.16.230.2                           0 65004 65003 ?\n *>                   172.16.3.2               0             0 65001 ?\n *>  172.16.2.254/32  172.16.230.2                           0 65004 65003 ?\n *                    172.16.3.2                             0 65001 65003 ?\n *   172.16.3.2/31    172.16.3.2               0             0 65001 ?\n *>                   0.0.0.0                  0         32768 ?\n *   172.16.230.2/31  172.16.230.2             0             0 65004 ?\n *>                   0.0.0.0                  0         32768 ?\n *>  172.16.240.2/31  172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65003 ?\n *>  172.16.250.2/31  172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 ?\n *   172.16.254.254/32\n                       172.16.230.2                           0 65004 65003 65001 ?\n *>                   172.16.3.2               0             0 65001 ?"
+    },
+    "changed": false
+}
+ok: [172.16.254.254] => {
+    "ansible_facts": {
+        "vrf_var": "EDGE"
+    },
+    "changed": false
+}
+ok: [10.0.0.1] => {
+    "ansible_facts": {
+        "vrf_var": ""
+    },
+    "changed": false
+}
+META: ran handlers
+META: ran handlers
+
+PLAY [all] *****************************************************************************************************
+META: ran handlers
+META: ran handlers
+META: ran handlers
+
+PLAY [Show VRF BGP Routes] *************************************************************************************
+META: ran handlers
+
+TASK [ios_command] *********************************************************************************************
+task path: /vagrant/NetOpsWorkshop/Ansible/Week2 Homework/GetBGPRoutes.yml:18
+ [WARNING]: when statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{
+vrf_var is defined }}
+
+ [WARNING]: when statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{
+vrf_var is defined }}
+
+<172.16.1.3> using connection plugin network_cli
+ [WARNING]: when statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{
+vrf_var is defined }}
+
+ [WARNING]: when statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{
+vrf_var is defined }}
+
+<172.16.2.3> using connection plugin network_cli
+ [WARNING]: when statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{
+vrf_var is defined }}
+
+<172.16.3.3> using connection plugin network_cli
+<172.16.254.254> using connection plugin network_cli
+<10.0.0.1> using connection plugin network_cli
+Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/network/ios/ios_command.py
+<172.16.2.3> ESTABLISH LOCAL CONNECTION FOR USER: vagrant
+<172.16.2.3> EXEC /bin/sh -c 'echo ~ && sleep 0'
+Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/network/ios/ios_command.py
+<172.16.1.3> ESTABLISH LOCAL CONNECTION FOR USER: vagrant
+<172.16.1.3> EXEC /bin/sh -c 'echo ~ && sleep 0'
+Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/network/ios/ios_command.py
+<172.16.3.3> ESTABLISH LOCAL CONNECTION FOR USER: vagrant
+<172.16.3.3> EXEC /bin/sh -c 'echo ~ && sleep 0'
+<172.16.2.3> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.77-241051573735532 `" && echo ansible-tmp-1506799380.77-241051573735532="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.77-241051573735532 `" ) && sleep 0'
+<172.16.1.3> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.78-276520235037930 `" && echo ansible-tmp-1506799380.78-276520235037930="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.78-276520235037930 `" ) && sleep 0'
+Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/network/ios/ios_command.py
+<172.16.254.254> ESTABLISH LOCAL CONNECTION FOR USER: vagrant
+<172.16.254.254> EXEC /bin/sh -c 'echo ~ && sleep 0'
+<172.16.3.3> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.81-145264184966710 `" && echo ansible-tmp-1506799380.81-145264184966710="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.81-145264184966710 `" ) && sleep 0'
+<172.16.254.254> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.84-222132343435122 `" && echo ansible-tmp-1506799380.84-222132343435122="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.84-222132343435122 `" ) && sleep 0'
+<172.16.2.3> PUT /tmp/tmpH7g2Te TO /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.77-241051573735532/ios_command.py
+<172.16.2.3> EXEC /bin/sh -c 'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.77-241051573735532/ /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.77-241051573735532/ios_command.py && sleep 0'
+<172.16.1.3> PUT /tmp/tmpUenzLB TO /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.78-276520235037930/ios_command.py
+<172.16.1.3> EXEC /bin/sh -c 'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.78-276520235037930/ /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.78-276520235037930/ios_command.py && sleep 0'
+Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/network/ios/ios_command.py
+<10.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: vagrant
+<10.0.0.1> EXEC /bin/sh -c 'echo ~ && sleep 0'
+<172.16.3.3> PUT /tmp/tmpVgazcq TO /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.81-145264184966710/ios_command.py
+<172.16.3.3> EXEC /bin/sh -c 'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.81-145264184966710/ /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.81-145264184966710/ios_command.py && sleep 0'
+<172.16.2.3> EXEC /bin/sh -c '/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.77-241051573735532/ios_command.py; rm -rf "/home/vagrant/.ansible/tmp/ansible-tmp-1506799380.77-241051573735532/" > /dev/null 2>&1 && sleep 0'
+<172.16.254.254> PUT /tmp/tmpqgE7mo TO /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.84-222132343435122/ios_command.py
+<172.16.1.3> EXEC /bin/sh -c '/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.78-276520235037930/ios_command.py; rm -rf "/home/vagrant/.ansible/tmp/ansible-tmp-1506799380.78-276520235037930/" > /dev/null 2>&1 && sleep 0'
+<172.16.254.254> EXEC /bin/sh -c 'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.84-222132343435122/ /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.84-222132343435122/ios_command.py && sleep 0'
+<10.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.89-216512780306700 `" && echo ansible-tmp-1506799380.89-216512780306700="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.89-216512780306700 `" ) && sleep 0'
+<172.16.3.3> EXEC /bin/sh -c '/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.81-145264184966710/ios_command.py; rm -rf "/home/vagrant/.ansible/tmp/ansible-tmp-1506799380.81-145264184966710/" > /dev/null 2>&1 && sleep 0'
+<172.16.254.254> EXEC /bin/sh -c '/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.84-222132343435122/ios_command.py; rm -rf "/home/vagrant/.ansible/tmp/ansible-tmp-1506799380.84-222132343435122/" > /dev/null 2>&1 && sleep 0'
+<10.0.0.1> PUT /tmp/tmp5m44hJ TO /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.89-216512780306700/ios_command.py
+<10.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.89-216512780306700/ /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.89-216512780306700/ios_command.py && sleep 0'
+<10.0.0.1> EXEC /bin/sh -c '/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1506799380.89-216512780306700/ios_command.py; rm -rf "/home/vagrant/.ansible/tmp/ansible-tmp-1506799380.89-216512780306700/" > /dev/null 2>&1 && sleep 0'
+ok: [172.16.254.254] => (item=172.16.254.254) => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "auth_pass": null,
+            "authorize": null,
+            "commands": [
+                "sho ip bgp vpnv4 vrf EDGE",
+                "sho ip bgp vpnv4 vrf EDGE summary"
+            ],
+            "host": null,
+            "interval": 1,
+            "match": "all",
+            "password": null,
+            "port": null,
+            "provider": null,
+            "retries": 10,
+            "ssh_keyfile": null,
+            "timeout": null,
+            "username": null,
+            "wait_for": null
+        }
+    },
+    "item": "172.16.254.254",
+    "stdout": [
+        "% BGP cannot run because the router-id is not configured\n\nBGP table version is 16, local router ID is 172.16.254.254\nStatus codes: s suppressed, d damped, h history, * valid, > best, i - internal,\n              r RIB-failure, S Stale\nOrigin codes: i - IGP, e - EGP, ? - incomplete\n\n   Network          Next Hop            Metric LocPrf Weight Path\nRoute Distinguisher: 1000:1 (default for vrf EDGE) VRF Router ID 172.16.254.254\n*  10.0.0.1/32      172.16.3.3                             0 65013 65004 ?\n*>                  172.16.1.3                             0 65002 65004 ?\n*                   172.16.2.3                             0 65003 65004 ?\n*  10.0.0.2/32      172.16.3.3                             0 65013 65004 ?\n*>                  172.16.1.3                             0 65002 65004 ?\n*                   172.16.2.3                             0 65003 65004 ?\n*  10.0.0.3/32      172.16.3.3                             0 65013 65004 ?\n*>                  172.16.1.3                             0 65002 65004 ?\n*                   172.16.2.3                             0 65003 65004 ?\n*  10.0.0.4/32      172.16.3.3                             0 65013 65004 ?\n*>                  172.16.1.3                             0 65002 65004 ?\n*                   172.16.2.3                             0 65003 65004 ?\n*  172.16.0.0/24    172.16.3.3               0             0 65013 i\n*                   172.16.2.3               0             0 65003 i\n*                   172.16.1.3               0             0 65002 i\n*>                  0.0.0.0                  0         32768 ?\n*  172.16.1.2/31    172.16.1.3               0             0 65002 ?\n*>                  0.0.0.0                  0         32768 ?\n*  172.16.1.254/32  172.16.3.3                             0 65013 65004 65002 ?\n*                   172.16.2.3                             0 65003 65004 65002 ?\n*>                  172.16.1.3               0             0 65002 ?\n*  172.16.2.2/31    172.16.2.3               0             0 65003 ?\n*>                  0.0.0.0                  0         32768 ?\n*  172.16.2.254/32  172.16.3.3                             0 65013 65004 65003 ?\n*                   172.16.1.3                             0 65002 65004 65003 ?\n*>                  172.16.2.3               0             0 65003 ?\n*  172.16.3.2/31    172.16.3.3               0             0 65013 ?\n*>                  0.0.0.0                  0         32768 ?\n*> 172.16.230.2/31  172.16.3.3               0             0 65013 ?\n*                   172.16.1.3                             0 65002 65004 ?\n*                   172.16.2.3                             0 65003 65004 ?\n*  172.16.240.2/31  172.16.3.3                             0 65013 65004 ?\n*                   172.16.1.3                             0 65002 65004 ?\n*>                  172.16.2.3               0             0 65003 ?\n*  172.16.250.2/31  172.16.3.3                             0 65013 65004 ?\n*                   172.16.2.3                             0 65003 65004 ?\n*>                  172.16.1.3               0             0 65002 ?\n*> 172.16.254.254/32\n                    0.0.0.0                  0         32768 ?",
+        "% BGP cannot run because the router-id is not configured\nBGP router identifier 172.16.254.254, local AS number 65001\nBGP table version is 16, main routing table version 16\n14 network entries using 2016 bytes of memory\n38 path entries using 1976 bytes of memory\n14/5 BGP path/bestpath attribute entries using 1848 bytes of memory\n10 BGP AS-PATH entries using 240 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 6080 total bytes of memory\nBGP activity 14/0 prefixes, 40/2 paths, scan interval 60 secs\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n172.16.1.3      4        65002     167     127       16    0    0 01:48:26       11\n172.16.2.3      4        65003     167     126       16    0    0 01:48:26       11\n172.16.3.3      4        65013     159     120       16    0    0 01:42:17       11"
+    ],
+    "stdout_lines": [
+        [
+            "% BGP cannot run because the router-id is not configured",
+            "",
+            "BGP table version is 16, local router ID is 172.16.254.254",
+            "Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,",
+            "              r RIB-failure, S Stale",
+            "Origin codes: i - IGP, e - EGP, ? - incomplete",
+            "",
+            "   Network          Next Hop            Metric LocPrf Weight Path",
+            "Route Distinguisher: 1000:1 (default for vrf EDGE) VRF Router ID 172.16.254.254",
+            "*  10.0.0.1/32      172.16.3.3                             0 65013 65004 ?",
+            "*>                  172.16.1.3                             0 65002 65004 ?",
+            "*                   172.16.2.3                             0 65003 65004 ?",
+            "*  10.0.0.2/32      172.16.3.3                             0 65013 65004 ?",
+            "*>                  172.16.1.3                             0 65002 65004 ?",
+            "*                   172.16.2.3                             0 65003 65004 ?",
+            "*  10.0.0.3/32      172.16.3.3                             0 65013 65004 ?",
+            "*>                  172.16.1.3                             0 65002 65004 ?",
+            "*                   172.16.2.3                             0 65003 65004 ?",
+            "*  10.0.0.4/32      172.16.3.3                             0 65013 65004 ?",
+            "*>                  172.16.1.3                             0 65002 65004 ?",
+            "*                   172.16.2.3                             0 65003 65004 ?",
+            "*  172.16.0.0/24    172.16.3.3               0             0 65013 i",
+            "*                   172.16.2.3               0             0 65003 i",
+            "*                   172.16.1.3               0             0 65002 i",
+            "*>                  0.0.0.0                  0         32768 ?",
+            "*  172.16.1.2/31    172.16.1.3               0             0 65002 ?",
+            "*>                  0.0.0.0                  0         32768 ?",
+            "*  172.16.1.254/32  172.16.3.3                             0 65013 65004 65002 ?",
+            "*                   172.16.2.3                             0 65003 65004 65002 ?",
+            "*>                  172.16.1.3               0             0 65002 ?",
+            "*  172.16.2.2/31    172.16.2.3               0             0 65003 ?",
+            "*>                  0.0.0.0                  0         32768 ?",
+            "*  172.16.2.254/32  172.16.3.3                             0 65013 65004 65003 ?",
+            "*                   172.16.1.3                             0 65002 65004 65003 ?",
+            "*>                  172.16.2.3               0             0 65003 ?",
+            "*  172.16.3.2/31    172.16.3.3               0             0 65013 ?",
+            "*>                  0.0.0.0                  0         32768 ?",
+            "*> 172.16.230.2/31  172.16.3.3               0             0 65013 ?",
+            "*                   172.16.1.3                             0 65002 65004 ?",
+            "*                   172.16.2.3                             0 65003 65004 ?",
+            "*  172.16.240.2/31  172.16.3.3                             0 65013 65004 ?",
+            "*                   172.16.1.3                             0 65002 65004 ?",
+            "*>                  172.16.2.3               0             0 65003 ?",
+            "*  172.16.250.2/31  172.16.3.3                             0 65013 65004 ?",
+            "*                   172.16.2.3                             0 65003 65004 ?",
+            "*>                  172.16.1.3               0             0 65002 ?",
+            "*> 172.16.254.254/32",
+            "                    0.0.0.0                  0         32768 ?"
+        ],
+        [
+            "% BGP cannot run because the router-id is not configured",
+            "BGP router identifier 172.16.254.254, local AS number 65001",
+            "BGP table version is 16, main routing table version 16",
+            "14 network entries using 2016 bytes of memory",
+            "38 path entries using 1976 bytes of memory",
+            "14/5 BGP path/bestpath attribute entries using 1848 bytes of memory",
+            "10 BGP AS-PATH entries using 240 bytes of memory",
+            "0 BGP route-map cache entries using 0 bytes of memory",
+            "0 BGP filter-list cache entries using 0 bytes of memory",
+            "BGP using 6080 total bytes of memory",
+            "BGP activity 14/0 prefixes, 40/2 paths, scan interval 60 secs",
+            "",
+            "Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd",
+            "172.16.1.3      4        65002     167     127       16    0    0 01:48:26       11",
+            "172.16.2.3      4        65003     167     126       16    0    0 01:48:26       11",
+            "172.16.3.3      4        65013     159     120       16    0    0 01:42:17       11"
+        ]
+    ]
+}
+failed: [10.0.0.1] (item=10.0.0.1) => {
+    "failed": true,
+    "invocation": {
+        "module_args": {
+            "auth_pass": null,
+            "authorize": null,
+            "commands": [
+                "sho ip bgp vpnv4 vrf ",
+                "sho ip bgp vpnv4 vrf  summary"
+            ],
+            "host": null,
+            "interval": 1,
+            "match": "all",
+            "password": null,
+            "port": null,
+            "provider": null,
+            "retries": 10,
+            "ssh_keyfile": null,
+            "timeout": null,
+            "username": null,
+            "wait_for": null
+        }
+    },
+    "item": "10.0.0.1",
+    "msg": "sho ip bgp vpnv4 vrf \r\n% Incomplete command.\r\n\r\nSimInternet#",
+    "rc": 1
+}
+ok: [172.16.2.3] => (item=172.16.2.3) => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "auth_pass": null,
+            "authorize": null,
+            "commands": [
+                "sho ip bgp vpnv4 vrf ISP2",
+                "sho ip bgp vpnv4 vrf ISP2 summary"
+            ],
+            "host": null,
+            "interval": 1,
+            "match": "all",
+            "password": null,
+            "port": null,
+            "provider": null,
+            "retries": 10,
+            "ssh_keyfile": null,
+            "timeout": null,
+            "username": null,
+            "wait_for": null
+        }
+    },
+    "item": "172.16.2.3",
+    "stdout": [
+        "% BGP cannot run because the router-id is not configured\n\nBGP table version is 16, local router ID is 172.16.2.254\nStatus codes: s suppressed, d damped, h history, * valid, > best, i - internal,\n              r RIB-failure, S Stale\nOrigin codes: i - IGP, e - EGP, ? - incomplete\n\n   Network          Next Hop            Metric LocPrf Weight Path\nRoute Distinguisher: 1000:1 (default for vrf ISP2) VRF Router ID 172.16.2.254\n*  10.0.0.1/32      172.16.2.2                             0 65001 65002 65004 ?\n*>                  172.16.240.2             0             0 65004 ?\n*  10.0.0.2/32      172.16.2.2                             0 65001 65002 65004 ?\n*>                  172.16.240.2             0             0 65004 ?\n*  10.0.0.3/32      172.16.2.2                             0 65001 65002 65004 ?\n*>                  172.16.240.2             0             0 65004 ?\n*  10.0.0.4/32      172.16.2.2                             0 65001 65002 65004 ?\n*>                  172.16.240.2             0             0 65004 ?\n*  172.16.0.0/24    172.16.2.2               0             0 65001 ?\n*                   172.16.240.2                           0 65004 65002 i\n*>                  172.16.2.2               0         32768 i\n*> 172.16.1.2/31    172.16.2.2               0             0 65001 ?\n*                   172.16.240.2                           0 65004 65002 ?\n*  172.16.1.254/32  172.16.2.2                             0 65001 65002 ?\n*>                  172.16.240.2                           0 65004 65002 ?\n*  172.16.2.2/31    172.16.2.2               0             0 65001 ?\n*>                  0.0.0.0                  0         32768 ?\n*> 172.16.2.254/32  0.0.0.0                  0         32768 ?\n*  172.16.3.2/31    172.16.240.2                           0 65004 65013 ?\n*>                  172.16.2.2               0             0 65001 ?\n*  172.16.230.2/31  172.16.2.2                             0 65001 65013 ?\n*>                  172.16.240.2             0             0 65004 ?\n*  172.16.240.2/31  172.16.240.2             0             0 65004 ?\n*>                  0.0.0.0                  0         32768 ?\n*  172.16.250.2/31  172.16.2.2                             0 65001 65002 ?\n*>                  172.16.240.2             0             0 65004 ?\n*> 172.16.254.254/32\n                    172.16.2.2               0             0 65001 ?",
+        "% BGP cannot run because the router-id is not configured\nBGP router identifier 172.16.2.254, local AS number 65003\nBGP table version is 16, main routing table version 16\n14 network entries using 2016 bytes of memory\n27 path entries using 1404 bytes of memory\n10/5 BGP path/bestpath attribute entries using 1320 bytes of memory\n7 BGP AS-PATH entries using 168 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 4908 total bytes of memory\nBGP activity 14/0 prefixes, 27/0 paths, scan interval 60 secs\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n172.16.2.2      4        65001     126     167       16    0    0 02:25:07       12\n172.16.240.2    4        65004     166     168       16    0    0 02:25:07       11"
+    ],
+    "stdout_lines": [
+        [
+            "% BGP cannot run because the router-id is not configured",
+            "",
+            "BGP table version is 16, local router ID is 172.16.2.254",
+            "Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,",
+            "              r RIB-failure, S Stale",
+            "Origin codes: i - IGP, e - EGP, ? - incomplete",
+            "",
+            "   Network          Next Hop            Metric LocPrf Weight Path",
+            "Route Distinguisher: 1000:1 (default for vrf ISP2) VRF Router ID 172.16.2.254",
+            "*  10.0.0.1/32      172.16.2.2                             0 65001 65002 65004 ?",
+            "*>                  172.16.240.2             0             0 65004 ?",
+            "*  10.0.0.2/32      172.16.2.2                             0 65001 65002 65004 ?",
+            "*>                  172.16.240.2             0             0 65004 ?",
+            "*  10.0.0.3/32      172.16.2.2                             0 65001 65002 65004 ?",
+            "*>                  172.16.240.2             0             0 65004 ?",
+            "*  10.0.0.4/32      172.16.2.2                             0 65001 65002 65004 ?",
+            "*>                  172.16.240.2             0             0 65004 ?",
+            "*  172.16.0.0/24    172.16.2.2               0             0 65001 ?",
+            "*                   172.16.240.2                           0 65004 65002 i",
+            "*>                  172.16.2.2               0         32768 i",
+            "*> 172.16.1.2/31    172.16.2.2               0             0 65001 ?",
+            "*                   172.16.240.2                           0 65004 65002 ?",
+            "*  172.16.1.254/32  172.16.2.2                             0 65001 65002 ?",
+            "*>                  172.16.240.2                           0 65004 65002 ?",
+            "*  172.16.2.2/31    172.16.2.2               0             0 65001 ?",
+            "*>                  0.0.0.0                  0         32768 ?",
+            "*> 172.16.2.254/32  0.0.0.0                  0         32768 ?",
+            "*  172.16.3.2/31    172.16.240.2                           0 65004 65013 ?",
+            "*>                  172.16.2.2               0             0 65001 ?",
+            "*  172.16.230.2/31  172.16.2.2                             0 65001 65013 ?",
+            "*>                  172.16.240.2             0             0 65004 ?",
+            "*  172.16.240.2/31  172.16.240.2             0             0 65004 ?",
+            "*>                  0.0.0.0                  0         32768 ?",
+            "*  172.16.250.2/31  172.16.2.2                             0 65001 65002 ?",
+            "*>                  172.16.240.2             0             0 65004 ?",
+            "*> 172.16.254.254/32",
+            "                    172.16.2.2               0             0 65001 ?"
+        ],
+        [
+            "% BGP cannot run because the router-id is not configured",
+            "BGP router identifier 172.16.2.254, local AS number 65003",
+            "BGP table version is 16, main routing table version 16",
+            "14 network entries using 2016 bytes of memory",
+            "27 path entries using 1404 bytes of memory",
+            "10/5 BGP path/bestpath attribute entries using 1320 bytes of memory",
+            "7 BGP AS-PATH entries using 168 bytes of memory",
+            "0 BGP route-map cache entries using 0 bytes of memory",
+            "0 BGP filter-list cache entries using 0 bytes of memory",
+            "BGP using 4908 total bytes of memory",
+            "BGP activity 14/0 prefixes, 27/0 paths, scan interval 60 secs",
+            "",
+            "Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd",
+            "172.16.2.2      4        65001     126     167       16    0    0 02:25:07       12",
+            "172.16.240.2    4        65004     166     168       16    0    0 02:25:07       11"
+        ]
+    ]
+}
+ok: [172.16.1.3] => (item=172.16.1.3) => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "auth_pass": null,
+            "authorize": null,
+            "commands": [
+                "sho ip bgp vpnv4 vrf ISP1",
+                "sho ip bgp vpnv4 vrf ISP1 summary"
+            ],
+            "host": null,
+            "interval": 1,
+            "match": "all",
+            "password": null,
+            "port": null,
+            "provider": null,
+            "retries": 10,
+            "ssh_keyfile": null,
+            "timeout": null,
+            "username": null,
+            "wait_for": null
+        }
+    },
+    "item": "172.16.1.3",
+    "stdout": [
+        "% BGP cannot run because the router-id is not configured\n\nBGP table version is 16, local router ID is 172.16.1.254\nStatus codes: s suppressed, d damped, h history, * valid, > best, i - internal,\n              r RIB-failure, S Stale\nOrigin codes: i - IGP, e - EGP, ? - incomplete\n\n   Network          Next Hop            Metric LocPrf Weight Path\nRoute Distinguisher: 1000:1 (default for vrf ISP1) VRF Router ID 172.16.1.254\n*> 10.0.0.1/32      172.16.250.2             0             0 65004 ?\n*> 10.0.0.2/32      172.16.250.2             0             0 65004 ?\n*> 10.0.0.3/32      172.16.250.2             0             0 65004 ?\n*> 10.0.0.4/32      172.16.250.2             0             0 65004 ?\n*  172.16.0.0/24    172.16.1.2               0             0 65001 ?\n*>                  172.16.1.2               0         32768 i\n*  172.16.1.2/31    172.16.1.2               0             0 65001 ?\n*>                  0.0.0.0                  0         32768 ?\n*> 172.16.1.254/32  0.0.0.0                  0         32768 ?\n*> 172.16.2.2/31    172.16.1.2               0             0 65001 ?\n*                   172.16.250.2                           0 65004 65003 ?\n*  172.16.2.254/32  172.16.1.2                             0 65001 65003 ?\n*>                  172.16.250.2                           0 65004 65003 ?\n*  172.16.3.2/31    172.16.250.2                           0 65004 65013 ?\n*>                  172.16.1.2               0             0 65001 ?\n*  172.16.230.2/31  172.16.1.2                             0 65001 65013 ?\n*>                  172.16.250.2             0             0 65004 ?\n*  172.16.240.2/31  172.16.1.2                             0 65001 65003 ?\n*>                  172.16.250.2             0             0 65004 ?\n*  172.16.250.2/31  172.16.250.2             0             0 65004 ?\n*>                  0.0.0.0                  0         32768 ?\n*  172.16.254.254/32\n                    172.16.250.2                           0 65004 65003 65001 ?\n*>                  172.16.1.2               0             0 65001 ?",
+        "% BGP cannot run because the router-id is not configured\nBGP router identifier 172.16.1.254, local AS number 65002\nBGP table version is 16, main routing table version 16\n14 network entries using 2016 bytes of memory\n23 path entries using 1196 bytes of memory\n9/5 BGP path/bestpath attribute entries using 1188 bytes of memory\n7 BGP AS-PATH entries using 168 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 4568 total bytes of memory\nBGP activity 14/0 prefixes, 23/0 paths, scan interval 60 secs\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n172.16.1.2      4        65001     127     167       16    0    0 02:25:07        8\n172.16.250.2    4        65004     167     167       16    0    0 02:25:05       11"
+    ],
+    "stdout_lines": [
+        [
+            "% BGP cannot run because the router-id is not configured",
+            "",
+            "BGP table version is 16, local router ID is 172.16.1.254",
+            "Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,",
+            "              r RIB-failure, S Stale",
+            "Origin codes: i - IGP, e - EGP, ? - incomplete",
+            "",
+            "   Network          Next Hop            Metric LocPrf Weight Path",
+            "Route Distinguisher: 1000:1 (default for vrf ISP1) VRF Router ID 172.16.1.254",
+            "*> 10.0.0.1/32      172.16.250.2             0             0 65004 ?",
+            "*> 10.0.0.2/32      172.16.250.2             0             0 65004 ?",
+            "*> 10.0.0.3/32      172.16.250.2             0             0 65004 ?",
+            "*> 10.0.0.4/32      172.16.250.2             0             0 65004 ?",
+            "*  172.16.0.0/24    172.16.1.2               0             0 65001 ?",
+            "*>                  172.16.1.2               0         32768 i",
+            "*  172.16.1.2/31    172.16.1.2               0             0 65001 ?",
+            "*>                  0.0.0.0                  0         32768 ?",
+            "*> 172.16.1.254/32  0.0.0.0                  0         32768 ?",
+            "*> 172.16.2.2/31    172.16.1.2               0             0 65001 ?",
+            "*                   172.16.250.2                           0 65004 65003 ?",
+            "*  172.16.2.254/32  172.16.1.2                             0 65001 65003 ?",
+            "*>                  172.16.250.2                           0 65004 65003 ?",
+            "*  172.16.3.2/31    172.16.250.2                           0 65004 65013 ?",
+            "*>                  172.16.1.2               0             0 65001 ?",
+            "*  172.16.230.2/31  172.16.1.2                             0 65001 65013 ?",
+            "*>                  172.16.250.2             0             0 65004 ?",
+            "*  172.16.240.2/31  172.16.1.2                             0 65001 65003 ?",
+            "*>                  172.16.250.2             0             0 65004 ?",
+            "*  172.16.250.2/31  172.16.250.2             0             0 65004 ?",
+            "*>                  0.0.0.0                  0         32768 ?",
+            "*  172.16.254.254/32",
+            "                    172.16.250.2                           0 65004 65003 65001 ?",
+            "*>                  172.16.1.2               0             0 65001 ?"
+        ],
+        [
+            "% BGP cannot run because the router-id is not configured",
+            "BGP router identifier 172.16.1.254, local AS number 65002",
+            "BGP table version is 16, main routing table version 16",
+            "14 network entries using 2016 bytes of memory",
+            "23 path entries using 1196 bytes of memory",
+            "9/5 BGP path/bestpath attribute entries using 1188 bytes of memory",
+            "7 BGP AS-PATH entries using 168 bytes of memory",
+            "0 BGP route-map cache entries using 0 bytes of memory",
+            "0 BGP filter-list cache entries using 0 bytes of memory",
+            "BGP using 4568 total bytes of memory",
+            "BGP activity 14/0 prefixes, 23/0 paths, scan interval 60 secs",
+            "",
+            "Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd",
+            "172.16.1.2      4        65001     127     167       16    0    0 02:25:07        8",
+            "172.16.250.2    4        65004     167     167       16    0    0 02:25:05       11"
+        ]
+    ]
+}
+failed: [172.16.3.3] (item=172.16.3.3) => {
+    "failed": true,
+    "invocation": {
+        "module_args": {
+            "auth_pass": null,
+            "authorize": null,
+            "commands": [
+                "sho ip bgp vpnv4 vrf rf ISP3) VRF Router ID 172.16.230.3\n *>  10.0.0.1/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *>  10.0.0.2/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *>  10.0.0.3/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *>  10.0.0.4/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *   172.16.0.0/24    172.16.230.2                           0 65004 65002 i\n *                    172.16.3.2               0             0 65001 ?\n *>                   172.16.3.2               0         32768 i\n *   172.16.1.2/31    172.16.230.2                           0 65004 65002 ?\n *>                   172.16.3.2               0             0 65001 ?\n *>  172.16.1.254/32  172.16.230.2                           0 65004 65002 ?\n *                    172.16.3.2                             0 65001 65002 ?\n *   172.16.2.2/31    172.16.230.2                           0 65004 65003 ?\n *>                   172.16.3.2               0             0 65001 ?\n *>  172.16.2.254/32  172.16.230.2                           0 65004 65003 ?\n *                    172.16.3.2                             0 65001 65003 ?\n *   172.16.3.2/31    172.16.3.2               0             0 65001 ?\n *>                   0.0.0.0                  0         32768 ?\n *   172.16.230.2/31  172.16.230.2             0             0 65004 ?\n *>                   0.0.0.0                  0         32768 ?\n *>  172.16.240.2/31  172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65003 ?\n *>  172.16.250.2/31  172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 ?\n *   172.16.254.254/32\n                       172.16.230.2                           0 65004 65003 65001 ?\n *>                   172.16.3.2               0             0 65001 ?",
+                "sho ip bgp vpnv4 vrf rf ISP3) VRF Router ID 172.16.230.3\n *>  10.0.0.1/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *>  10.0.0.2/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *>  10.0.0.3/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *>  10.0.0.4/32      172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 65004 ?\n *   172.16.0.0/24    172.16.230.2                           0 65004 65002 i\n *                    172.16.3.2               0             0 65001 ?\n *>                   172.16.3.2               0         32768 i\n *   172.16.1.2/31    172.16.230.2                           0 65004 65002 ?\n *>                   172.16.3.2               0             0 65001 ?\n *>  172.16.1.254/32  172.16.230.2                           0 65004 65002 ?\n *                    172.16.3.2                             0 65001 65002 ?\n *   172.16.2.2/31    172.16.230.2                           0 65004 65003 ?\n *>                   172.16.3.2               0             0 65001 ?\n *>  172.16.2.254/32  172.16.230.2                           0 65004 65003 ?\n *                    172.16.3.2                             0 65001 65003 ?\n *   172.16.3.2/31    172.16.3.2               0             0 65001 ?\n *>                   0.0.0.0                  0         32768 ?\n *   172.16.230.2/31  172.16.230.2             0             0 65004 ?\n *>                   0.0.0.0                  0         32768 ?\n *>  172.16.240.2/31  172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65003 ?\n *>  172.16.250.2/31  172.16.230.2             0             0 65004 ?\n *                    172.16.3.2                             0 65001 65002 ?\n *   172.16.254.254/32\n                       172.16.230.2                           0 65004 65003 65001 ?\n *>                   172.16.3.2               0             0 65001 ? summary"
+            ],
+            "host": null,
+            "interval": 1,
+            "match": "all",
+            "password": null,
+            "port": null,
+            "provider": null,
+            "retries": 10,
+            "ssh_keyfile": null,
+            "timeout": null,
+            "username": null,
+            "wait_for": null
+        }
+    },
+    "item": "172.16.3.3",
+    "msg": "sho ip bgp vpnv4 vrf rf ISP3) VRF Router ID 172.16.230.3\r\n                              ^\r\n% Invalid input detected at '^' marker.\r\n\r\nISP3# *> ",
+    "rc": 1
+}
+META: ran handlers
+META: ran handlers
+
+PLAY [Show BGP Routes] *****************************************************************************************
+META: ran handlers
+
+TASK [ios_command] *********************************************************************************************
+task path: /vagrant/NetOpsWorkshop/Ansible/Week2 Homework/GetBGPRoutes.yml:33
+ [WARNING]: when statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{
+vrf_var is not defined }}
+
+skipping: [172.16.1.3] => (item=172.16.1.3)  => {
+    "changed": false,
+    "item": "172.16.1.3",
+    "skip_reason": "Conditional result was False",
+    "skipped": true
+}
+ [WARNING]: when statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{
+vrf_var is not defined }}
+
+skipping: [172.16.2.3] => (item=172.16.2.3)  => {
+    "changed": false,
+    "item": "172.16.2.3",
+    "skip_reason": "Conditional result was False",
+    "skipped": true
+}
+ [WARNING]: when statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{
+vrf_var is not defined }}
+
+skipping: [172.16.254.254] => (item=172.16.254.254)  => {
+    "changed": false,
+    "item": "172.16.254.254",
+    "skip_reason": "Conditional result was False",
+    "skipped": true
+}
+META: ran handlers
+META: ran handlers
+
+PLAY [all] *****************************************************************************************************
+META: ran handlers
+
+TASK [Save Output to /BGP_Routes] ******************************************************************************
+task path: /vagrant/NetOpsWorkshop/Ansible/Week2 Homework/GetBGPRoutes.yml:47
+fatal: [172.16.1.3]: FAILED! => {
+    "failed": true,
+    "msg": "the field 'args' has an invalid value, which appears to include a variable that is undefined. The error was: 'dict object' has no attribute 'stdout'\n\nThe error appears to have been in '/vagrant/NetOpsWorkshop/Ansible/Week2 Homework/GetBGPRoutes.yml': line 47, column 5, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n  tasks:\n  - name: Save Output to /BGP_Routes\n    ^ here\n"
+}
+fatal: [172.16.2.3]: FAILED! => {
+    "failed": true,
+    "msg": "the field 'args' has an invalid value, which appears to include a variable that is undefined. The error was: 'dict object' has no attribute 'stdout'\n\nThe error appears to have been in '/vagrant/NetOpsWorkshop/Ansible/Week2 Homework/GetBGPRoutes.yml': line 47, column 5, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n  tasks:\n  - name: Save Output to /BGP_Routes\n    ^ here\n"
+}
+fatal: [172.16.254.254]: FAILED! => {
+    "failed": true,
+    "msg": "the field 'args' has an invalid value, which appears to include a variable that is undefined. The error was: 'dict object' has no attribute 'stdout'\n\nThe error appears to have been in '/vagrant/NetOpsWorkshop/Ansible/Week2 Homework/GetBGPRoutes.yml': line 47, column 5, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n  tasks:\n  - name: Save Output to /BGP_Routes\n    ^ here\n"
+}
+
+PLAY RECAP *****************************************************************************************************
+10.0.0.1                   : ok=2    changed=0    unreachable=0    failed=1
+172.16.1.3                 : ok=3    changed=0    unreachable=0    failed=1
+172.16.2.3                 : ok=3    changed=0    unreachable=0    failed=1
+172.16.254.254             : ok=3    changed=0    unreachable=0    failed=1
+172.16.3.3                 : ok=2    changed=0    unreachable=0    failed=1

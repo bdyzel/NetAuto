@@ -1,8 +1,0 @@
----
-- name:  Device Uptime
-  hosts: all
-  vars:
-  - results: "{{inventory_dir}}/results"
-  tasks:
-  - include: "uptime/r-{{src|default('device')}}.yml"
-  - include: "uptime/rep-{{dst|default('txt')}}.yml"
