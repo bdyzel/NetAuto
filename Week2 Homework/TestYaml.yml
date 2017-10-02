@@ -13,4 +13,5 @@
         - "show run vrf | inc ^ip vrf "
     register: vrfvar
   - set_fact: vrf_var="{% set r = vrfvar.stdout_lines %}{{ r | regex_replace('ip vrf ') }}"
-#  - debug: var=vrf_var
+    with_items: vrfvar
+#    with_items: "{{ vrfvar | map('regex_search','\\,') | list | unique }}"
