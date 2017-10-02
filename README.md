@@ -17,5 +17,16 @@ The easier part(I hope), will be the initial deployment of the routers by using 
 * Until I can figure out how to run a FortiVM image on Virtual box the idea to also run the Fortigate in the GNS3 environment is still a cloud dream, pardon the pun.
 A substitute Firewall may still present itself in order to test a REST API deployment or change automation.
 
+ ##### **Week1**
+* This was used just to build the lab
+
+ ##### **Week2**
+* Creating a reporting system that will;
+   * Provide certain Ansible facts for all devices on the lab environment.   
+   * Get BGP secific Routing Configuration.   
+   * Get VRF Name of devices if VRF is being used on a Device.   
+     * Additional consideration may be required for when there is more than one VRF on a device, this functionality is not yet built in or require for this lab.     
+  * Get results of BGP show commands for the routing table and summary of the BGP relationships  
+
 * ## Lab Diagram
 ![Lab Diagram](https://github.com/bdyzel/NetAuto/blob/master/Lab%20Layout.png?raw=true "Optional Title")
