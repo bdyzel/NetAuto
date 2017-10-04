@@ -13,5 +13,13 @@
         - "show run vrf | inc ^ip vrf "
     register: vrfvar
   - set_fact: vrf_var="{% set r = vrfvar.stdout_lines %}{{ r | regex_replace('ip vrf ') }}"
-    with_items: vrfvar
+#  - debug: var="{{vrfvar.stdout_lines | regex_replace('ip vrf ') | to_json }}"
 #    with_items: "{{ vrfvar | map('regex_search','\\,') | list | unique }}"
+
+  - ios_command:
+      commands:
+        - "sho ip bgp vpnv4 vrf {{vrf_var}} | beg Network"
+        - "sho ip bgp vpnv4 vrf {{vrf_var}} summary | beg Neighbor"
+    register: bgproutesvrf
+    when: vrf_var !=""
+  - debug: var=bgproutesvrf

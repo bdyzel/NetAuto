@@ -1,0 +1,16 @@
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+
+  tasks:
+  - name: Get Full Running Configuration
+    ios_command:
+      commands:
+        - "show run"
+    register: fullconf
+
+  - name: Save Output to /Full_Configs
+    copy:
+      content: "{{ fullconf.stdout[0] }}"
+      dest: './Full_Configuration/FullConf_{{ inventory_hostname }}.conf'
