@@ -1,5 +1,5 @@
 ---
-- hosts: isp1
+- hosts: all
   gather_facts: false
   connection: local
 

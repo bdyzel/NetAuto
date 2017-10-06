@@ -1,14 +1,15 @@
 ansible_facts:
     ansible_all_ipv4_addresses:
-    - 172.16.2.3
-    - 172.16.2.254
-    - 172.16.240.3
+    - 172.16.0.11
+    - 172.16.1.3
+    - 172.16.1.254
+    - 172.16.250.3
     ansible_interfaces:
         '1':
             adminstatus: down
             description: ''
             ifindex: '1'
-            mac: ca0307b00006
+            mac: ca02260c0006
             mtu: '1500'
             name: Ethernet0/0
             operstatus: down
@@ -18,9 +19,9 @@ ansible_facts:
             description: ''
             ifindex: '2'
             ipv4:
-            -   address: 172.16.240.3
+            -   address: 172.16.250.3
                 netmask: 255.255.255.254
-            mac: ca0307b00008
+            mac: ca02260c0008
             mtu: '1500'
             name: GigabitEthernet0/0
             operstatus: up
@@ -29,40 +30,43 @@ ansible_facts:
             adminstatus: up
             description: ''
             ifindex: '3'
-            mac: ca0307b0001c
+            ipv4:
+            -   address: 172.16.1.3
+                netmask: 255.255.255.254
+            mac: ca02260c001c
             mtu: '1500'
             name: GigabitEthernet1/0
             operstatus: up
             speed: '1500'
         '4':
-            adminstatus: up
+            adminstatus: down
             description: ''
             ifindex: '4'
-            ipv4:
-            -   address: 172.16.2.3
-                netmask: 255.255.255.254
-            mac: ca0307b00038
+            mac: ca02260c0038
             mtu: '1500'
             name: GigabitEthernet2/0
-            operstatus: up
+            operstatus: down
             speed: '1500'
         '5':
             adminstatus: down
             description: ''
             ifindex: '5'
-            mac: ca0307b00054
+            mac: ca02260c0054
             mtu: '1500'
             name: GigabitEthernet3/0
             operstatus: down
             speed: '1500'
         '6':
-            adminstatus: down
-            description: ''
+            adminstatus: up
+            description: mgnt-oob-isp1
             ifindex: '6'
-            mac: ca0307b00070
+            ipv4:
+            -   address: 172.16.0.11
+                netmask: 255.255.255.0
+            mac: ca02260c0070
             mtu: '1500'
             name: GigabitEthernet4/0
-            operstatus: down
+            operstatus: up
             speed: '1500'
         '7':
             adminstatus: up
@@ -87,7 +91,7 @@ ansible_facts:
             description: ''
             ifindex: '9'
             ipv4:
-            -   address: 172.16.2.254
+            -   address: 172.16.1.254
                 netmask: 255.255.255.255
             mac: ''
             mtu: '1514'
@@ -100,7 +104,7 @@ ansible_facts:
         \nCopyright (c) 1986-2009 by Cisco Systems, Inc.\r\nCompiled Wed 30-Sep-09\
         \ 07:48 by prod_rel_team"
     ansible_syslocation: ''
-    ansible_sysname: ISP2.myansibletest.lab
+    ansible_sysname: ISP1.myansibletest.lab
     ansible_sysobjectid: 1.3.6.1.4.1.9.1.222
-    ansible_sysuptime: '176477'
+    ansible_sysuptime: '743957'
 changed: false

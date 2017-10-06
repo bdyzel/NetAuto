@@ -135,7 +135,7 @@ ansible_facts:
             mtu: 1514
             operstatus: up
             type: null
-    ansible_net_memfree_mb: 339433
+    ansible_net_memfree_mb: 339496
     ansible_net_memtotal_mb: 373394
     ansible_net_model: 7206VXR (NPE400) processor
     ansible_net_serialnum: '4279256517'

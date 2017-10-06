@@ -17,7 +17,6 @@
   - ios_command:
       commands:
         - "sho ip bgp vpnv4 vrf {{vrf_var}} | beg Network"
-        - "sho ip bgp vpnv4 vrf {{vrf_var}} summary | beg Neighbor"
     register: bgproutesvrf
     when: vrf_var !=""
   - copy:
@@ -33,7 +32,6 @@
   - ios_command:
       commands:
         - "sho ip bgp | beg Network"
-        - "sho ip bgp summary | beg Neighbor"
     register: bgproutes
     when: vrf_var ==""
 #  - debug: var=bgproutes

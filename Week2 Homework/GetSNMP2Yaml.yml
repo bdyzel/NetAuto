@@ -33,9 +33,9 @@
   - name: Save IOS_Facts to YML files
     copy:
       content: "{{iosfacts|to_nice_yaml(indent=4)}}"
-      dest: './IOS_Data/IOSFacts_{{inventory_hostname}}.yml'
+      dest: './IOS_Data/IOSFacts_{{ansible_sysname}}.yml'
 
   - lineinfile:
       dest:   "{{results}}/uptime.log"
       regexp: "{{inventory_hostname}}"
-      line:   "{{'%20s %8s'|format(inventory_hostname,ansible_sysuptime)}}"
+      line:   "{{'%20s %8s'|format(ansible_sysname,ansible_sysuptime)}}"

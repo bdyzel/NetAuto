@@ -5,29 +5,31 @@ ansible_facts:
     - 172.16.230.2
     - 10.0.0.2
     - 10.0.0.3
+    - 172.16.0.14
     - 10.0.0.1
     - 172.16.240.2
     ansible_net_all_ipv6_addresses: []
-    ansible_net_config: "Building configuration...\n\nCurrent configuration : 2157\
-        \ bytes\n!\nupgrade fpd auto\nversion 15.0\nservice timestamps debug datetime\
-        \ msec\nservice timestamps log datetime msec\nno service password-encryption\n\
-        !\nhostname SimInternet\n!\nboot-start-marker\nboot-end-marker\n!\nenable\
-        \ secret 5 $1$9PbM$qba49riTkpYV9kXmGLhFY1\n!\nno aaa new-model\n!\n!\n!\n\
-        ip source-route\nno ip icmp rate-limit unreachable\nip cef\n!\n!\n!\n!\nno\
-        \ ip domain lookup\nip domain name myansibletest.lab\nno ipv6 cef\n!\nmultilink\
-        \ bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n!\nusername sshsim privilege\
-        \ 15 password 0 simkey2\n!\nredundancy\n!\n!\nip tcp synwait-time 5\nip ssh\
-        \ version 2\n! \n!\n!\n!\n!\n!\n!\n!\ninterface Loopback0\n ip address 10.0.0.1\
-        \ 255.255.255.255\n !\n!\ninterface Loopback1\n ip address 10.0.0.2 255.255.255.255\n\
-        \ !\n!\ninterface Loopback2\n ip address 10.0.0.3 255.255.255.255\n !\n!\n\
-        interface Loopback3\n ip address 10.0.0.4 255.255.255.255\n !\n!\ninterface\
-        \ Ethernet0/0\n no ip address\n shutdown\n duplex auto\n !\n!\ninterface GigabitEthernet0/0\n\
-        \ no ip address\n shutdown\n duplex full\n speed 1000\n media-type gbic\n\
-        \ negotiation auto\n !\n!\ninterface GigabitEthernet1/0\n ip address 172.16.250.2\
-        \ 255.255.255.254\n negotiation auto\n !\n!\ninterface GigabitEthernet2/0\n\
-        \ ip address 172.16.240.2 255.255.255.254\n negotiation auto\n !\n!\ninterface\
-        \ GigabitEthernet3/0\n ip address 172.16.230.2 255.255.255.254\n negotiation\
-        \ auto\n !\n!\ninterface GigabitEthernet4/0\n no ip address\n shutdown\n negotiation\
+    ansible_net_config: "Building configuration...\n\nCurrent configuration : 2260\
+        \ bytes\n!\n! Last configuration change at 08:34:31 UTC Fri Oct 6 2017\n!\n\
+        upgrade fpd auto\nversion 15.0\nservice timestamps debug datetime msec\nservice\
+        \ timestamps log datetime msec\nno service password-encryption\n!\nhostname\
+        \ SimInternet\n!\nboot-start-marker\nboot-end-marker\n!\nenable secret 5 $1$9PbM$qba49riTkpYV9kXmGLhFY1\n\
+        !\nno aaa new-model\n!\n!\n!\nip source-route\nno ip icmp rate-limit unreachable\n\
+        ip cef\n!\n!\n!\n!\nno ip domain lookup\nip domain name myansibletest.lab\n\
+        no ipv6 cef\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n\
+        !\nusername sshsim privilege 15 password 0 simkey2\n!\nredundancy\n!\n!\n\
+        ip tcp synwait-time 5\nip ssh version 2\n! \n!\n!\n!\n!\n!\n!\n!\ninterface\
+        \ Loopback0\n ip address 10.0.0.1 255.255.255.255\n !\n!\ninterface Loopback1\n\
+        \ ip address 10.0.0.2 255.255.255.255\n !\n!\ninterface Loopback2\n ip address\
+        \ 10.0.0.3 255.255.255.255\n !\n!\ninterface Loopback3\n ip address 10.0.0.4\
+        \ 255.255.255.255\n !\n!\ninterface Ethernet0/0\n no ip address\n shutdown\n\
+        \ duplex auto\n !\n!\ninterface GigabitEthernet0/0\n no ip address\n shutdown\n\
+        \ duplex full\n speed 1000\n media-type gbic\n negotiation auto\n !\n!\ninterface\
+        \ GigabitEthernet1/0\n ip address 172.16.250.2 255.255.255.254\n negotiation\
+        \ auto\n !\n!\ninterface GigabitEthernet2/0\n ip address 172.16.240.2 255.255.255.254\n\
+        \ negotiation auto\n !\n!\ninterface GigabitEthernet3/0\n ip address 172.16.230.2\
+        \ 255.255.255.254\n negotiation auto\n !\n!\ninterface GigabitEthernet4/0\n\
+        \ description mgnt-oob-simint\n ip address 172.16.0.14 255.255.255.0\n negotiation\
         \ auto\n !\n!\nrouter bgp 65004\n no synchronization\n bgp log-neighbor-changes\n\
         \ redistribute connected\n neighbor 172.16.230.3 remote-as 65013\n neighbor\
         \ 172.16.240.3 remote-as 65003\n neighbor 172.16.250.3 remote-as 65002\n no\
@@ -111,14 +113,16 @@ ansible_facts:
             type: '82543'
         GigabitEthernet4/0:
             bandwidth: 1000000
-            description: null
+            description: mgnt-oob-simint
             duplex: null
-            ipv4: null
-            lineprotocol: 'down '
+            ipv4:
+                address: 172.16.0.14
+                masklen: 24
+            lineprotocol: 'up '
             macaddress: ca05.062c.0070
             mediatype: SX
             mtu: 1500
-            operstatus: administratively down
+            operstatus: up
             type: '82543'
         Loopback0:
             bandwidth: 8000000
@@ -172,7 +176,7 @@ ansible_facts:
             mtu: 1514
             operstatus: up
             type: null
-    ansible_net_memfree_mb: 339674
+    ansible_net_memfree_mb: 339660
     ansible_net_memtotal_mb: 373394
     ansible_net_model: 7206VXR (NPE400) processor
     ansible_net_serialnum: '4279256517'
