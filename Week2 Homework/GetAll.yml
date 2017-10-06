@@ -2,14 +2,17 @@
 # Get all reports
 #
 ---
+- include: GetSNMP2Yaml.yml
+  name:    Get SNMP Report
+
 - include: GetBGPRoutes.yml
   name:    Get BGP Routes
 
 - include: GetBGPSum.yml
   name:    Get BGP Summary Report
 
-- include: GetSNMP2Yaml.yml
-  name:    Get SNMP Report
+- include: GetAPIConfReport.yml
+  name:    Get a Report on how the API is configured
 
 - include: GetBGPConf.yml
   name:    Get BGP Configuration

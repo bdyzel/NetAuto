@@ -1,0 +1,61 @@
+Virtual service csr_mgmt detail
+  State                 : Installed
+  Package information
+    Name                : csrmgmt.1_2_2.20140130_175103.ova
+    Path                : bootflash:/csrmgmt.1_2_2.20140130_175103.ova
+    Application
+      Name              : csr_mgmt
+      Installed version : 1.2.2
+      Description       : CSR-MGMT
+    Signing
+      Key type          : Cisco development key
+      Method            : SHA-1
+    Licensing
+      Name              : Not Available
+      Version           : Not Available
+
+  Detailed guest status
+    None
+
+  Activated profile name: None
+  Resource reservation
+    Disk                : 151 MB
+    Memory              : 0 MB
+    CPU                 : 0% system CPU
+
+  Attached devices
+    Type              Name        Alias            
+    ---------------------------------------------
+    NIC               net1        ieobc            
+    NIC               net2        net2             
+    Disk              _rootfs                      
+    Disk              /opt/var                     
+    Disk              /opt/va...                   
+    Serial/shell                  serial0          
+    Serial/aux                    serial1          
+    Serial/Syslog                 serial2          
+    Serial/Trace                  serial3          
+
+  Network interfaces
+    MAC address             Attached to interface           
+    ------------------------------------------------------
+    52:54:00:d2:04:fe                                       
+    52:54:00:d2:04:02                                       
+
+  Guest interface
+  ---
+  None
+
+  ---
+
+  Guest routes
+  ---
+  None
+
+  ---
+
+  Resource admission (without profile) : passed
+    Disk space    : 907MB
+    Memory        : 512MB 
+    CPU           : 30% system CPU 
+    VCPUs         : Not specified

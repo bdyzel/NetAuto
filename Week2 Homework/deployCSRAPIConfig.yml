@@ -1,0 +1,63 @@
+---
+- hosts: isp3
+  gather_facts: false
+  connection: local
+
+  tasks:
+  - name: Enable Rest API
+    ios_config:
+      lines:
+        - remote-management
+        - restful-api
+      save: yes
+
+  - name: Conf Dual Management Intf to support the RAPI
+    ios_config:
+      lines:
+        - interface virtualportgroup 13
+        - ip unnumbered gi 3
+        - no shutdown
+      save: yes
+
+# Was working and now isn't for some reason
+#  - name: Conf virtual-Service
+#    ios_config:
+#      lines:
+#        - virtual-service csrv_mgmt
+#        - vnic gateway virtualportgroup 13
+#        - guest ip address 172.16.0.200
+#      save: yes
+
+  - name: Conf IP Route map to the virtual port group
+    ios_config:
+      lines:
+        - ip route 172.16.0.200 255.255.255.255 virtualportgroup13
+      save: yes
+
+# The following is only supported from IOS XE 3.13S onwards
+#  - name: Conf Rest API Local Port and Auto Save
+#    ios_config:
+#      lines:
+#        - remote-management
+#        - restful-api local port 16700
+#        - restful-api autosave 60
+#      save: yes
+
+  - name: Conf HTTPS Support for R-API
+    ios_config:
+      lines:
+        - ip http secure-server
+        - transport-map type persistent webui https-webui
+        - secure-server
+        - transport type persistent webui input https-webui
+      save: yes
+
+  - ios_command:
+      commands:
+        - "show virtual-service detail"
+    register: vrapi
+
+  - name: Save Detail to API_Report
+    copy:
+      content: "{{ vrapi.stdout[0] }}"
+      dest: './API_Report/API_{{ inventory_hostname }}.conf'

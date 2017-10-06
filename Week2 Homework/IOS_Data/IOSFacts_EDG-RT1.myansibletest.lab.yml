@@ -6,40 +6,40 @@ ansible_facts:
     - 172.16.254.254
     - 172.16.2.2
     ansible_net_all_ipv6_addresses: []
-    ansible_net_config: "Building configuration...\n\nCurrent configuration : 2310\
-        \ bytes\n!\nupgrade fpd auto\nversion 15.0\nservice timestamps debug datetime\
-        \ msec\nservice timestamps log datetime msec\nservice password-encryption\n\
-        !\nhostname EDG-RT1\n!\nboot-start-marker\nboot-end-marker\n!\nenable secret\
-        \ 5 $1$LKtY$4clclxosUeMv7p8x8GbZj.\n!\nno aaa new-model\n!\n!\n!\nip source-route\n\
-        no ip icmp rate-limit unreachable\nip cef\n!\n!\nip vrf EDGE\n rd 1000:1\n\
-        !\n!\n!\nno ip domain lookup\nip domain name myansibletest.lab\nno ipv6 cef\n\
-        !\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n!\nusername sshedge\
-        \ privilege 15 password 7 0100150C500E1F5E\n!\nredundancy\n!\n!\nip tcp synwait-time\
-        \ 5\nip ssh version 2\n! \n!\n!\n!\n!\n!\n!\n!\ninterface Loopback0\n ip vrf\
-        \ forwarding EDGE\n ip address 172.16.254.254 255.255.255.255\n !\n!\ninterface\
-        \ Ethernet0/0\n no ip address\n shutdown\n duplex auto\n !\n!\ninterface GigabitEthernet0/0\n\
-        \ description Connection2Host\n ip vrf forwarding EDGE\n ip address 172.16.0.1\
-        \ 255.255.255.0\n duplex full\n speed 1000\n media-type gbic\n negotiation\
-        \ auto\n !\n!\ninterface GigabitEthernet1/0\n ip vrf forwarding EDGE\n ip\
-        \ address 172.16.1.2 255.255.255.254\n negotiation auto\n !\n!\ninterface\
-        \ GigabitEthernet2/0\n ip vrf forwarding EDGE\n ip address 172.16.2.2 255.255.255.254\n\
-        \ negotiation auto\n !\n!\ninterface GigabitEthernet3/0\n ip vrf forwarding\
-        \ EDGE\n ip address 172.16.3.2 255.255.255.254\n negotiation auto\n !\n!\n\
-        interface GigabitEthernet4/0\n no ip address\n shutdown\n negotiation auto\n\
-        \ !\n!\nrouter bgp 65001\n no synchronization\n bgp router-id vrf auto-assign\n\
-        \ bgp log-neighbor-changes\n no auto-summary\n !\n address-family ipv4 vrf\
-        \ EDGE\n  no synchronization\n  redistribute connected\n  neighbor 172.16.1.3\
-        \ remote-as 65002\n  neighbor 172.16.1.3 activate\n  neighbor 172.16.2.3 remote-as\
-        \ 65003\n  neighbor 172.16.2.3 activate\n  neighbor 172.16.3.3 remote-as 65013\n\
-        \  neighbor 172.16.3.3 activate\n exit-address-family\n!\nip forward-protocol\
-        \ nd\nno ip http server\nno ip http secure-server\n!\n!\n!\nno cdp log mismatch\
-        \ duplex\n!\n!\n!\n!\nsnmp-server community autolab RO\n!\n!\ncontrol-plane\n\
-        \ !\n!\n!\nmgcp fax t38 ecm\nmgcp behavior g729-variants static-pt\n!\n!\n\
-        !\ngatekeeper\n shutdown\n!\n!\nline con 0\n exec-timeout 0 0\n privilege\
-        \ level 15\n logging synchronous\n stopbits 1\nline aux 0\n exec-timeout 0\
-        \ 0\n privilege level 15\n logging synchronous\n stopbits 1\nline vty 0 4\n\
-        \ privilege level 15\n password 7 05080F1C224342001700\n login local\n transport\
-        \ input ssh\n!\nend"
+    ansible_net_config: "Building configuration...\n\nCurrent configuration : 2368\
+        \ bytes\n!\n! Last configuration change at 10:45:12 UTC Fri Oct 6 2017 by\
+        \ sshedge\n!\nupgrade fpd auto\nversion 15.0\nservice timestamps debug uptime\n\
+        service timestamps log uptime\nservice password-encryption\n!\nhostname EDG-RT1\n\
+        !\nboot-start-marker\nboot-end-marker\n!\nenable secret 5 $1$LKtY$4clclxosUeMv7p8x8GbZj.\n\
+        !\nno aaa new-model\n!\n!\n!\nip source-route\nno ip icmp rate-limit unreachable\n\
+        ip cef\n!\n!\nip vrf EDGE\n rd 1000:1\n!\n!\n!\nno ip domain lookup\nip domain\
+        \ name myansibletest.lab\nno ipv6 cef\n!\nmultilink bundle-name authenticated\n\
+        !\n!\n!\n!\n!\n!\n!\n!\nusername sshedge privilege 15 password 7 0100150C500E1F5E\n\
+        !\nredundancy\n!\n!\nip tcp synwait-time 5\nip ssh version 2\n! \n!\n!\n!\n\
+        !\n!\n!\n!\ninterface Loopback0\n ip vrf forwarding EDGE\n ip address 172.16.254.254\
+        \ 255.255.255.255\n !\n!\ninterface Ethernet0/0\n no ip address\n shutdown\n\
+        \ duplex auto\n !\n!\ninterface GigabitEthernet0/0\n description Connection2Host\n\
+        \ ip vrf forwarding EDGE\n ip address 172.16.0.1 255.255.255.0\n duplex full\n\
+        \ speed 1000\n media-type gbic\n negotiation auto\n !\n!\ninterface GigabitEthernet1/0\n\
+        \ ip vrf forwarding EDGE\n ip address 172.16.1.2 255.255.255.254\n negotiation\
+        \ auto\n !\n!\ninterface GigabitEthernet2/0\n ip vrf forwarding EDGE\n ip\
+        \ address 172.16.2.2 255.255.255.254\n negotiation auto\n !\n!\ninterface\
+        \ GigabitEthernet3/0\n ip vrf forwarding EDGE\n ip address 172.16.3.2 255.255.255.254\n\
+        \ negotiation auto\n !\n!\ninterface GigabitEthernet4/0\n no ip address\n\
+        \ shutdown\n negotiation auto\n !\n!\nrouter bgp 65001\n no synchronization\n\
+        \ bgp router-id vrf auto-assign\n bgp log-neighbor-changes\n no auto-summary\n\
+        \ !\n address-family ipv4 vrf EDGE\n  no synchronization\n  redistribute connected\n\
+        \  neighbor 172.16.1.3 remote-as 65002\n  neighbor 172.16.1.3 activate\n \
+        \ neighbor 172.16.2.3 remote-as 65003\n  neighbor 172.16.2.3 activate\n  neighbor\
+        \ 172.16.3.3 remote-as 65013\n  neighbor 172.16.3.3 activate\n exit-address-family\n\
+        !\nip forward-protocol nd\nno ip http server\nno ip http secure-server\n!\n\
+        !\n!\nno cdp log mismatch duplex\n!\n!\n!\n!\nsnmp-server community autolab\
+        \ RO\n!\n!\ncontrol-plane\n !\n!\n!\nmgcp fax t38 ecm\nmgcp behavior g729-variants\
+        \ static-pt\n!\n!\n!\ngatekeeper\n shutdown\n!\n!\nline con 0\n exec-timeout\
+        \ 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline aux 0\n\
+        \ exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\n\
+        line vty 0 4\n privilege level 15\n password 7 05080F1C224342001700\n login\
+        \ local\n transport input ssh\n!\nend"
     ansible_net_gather_subset:
     - hardware
     - default

@@ -62,6 +62,15 @@ ansible_facts:
             name: Loopback0
             operstatus: up
             speed: '1514'
+        '6':
+            adminstatus: up
+            description: ''
+            ifindex: '6'
+            mac: 001ee50cc7bd
+            mtu: '1500'
+            name: VirtualPortGroup13
+            operstatus: down
+            speed: '1500'
     ansible_syscontact: ''
     ansible_sysdescr: "Cisco IOS Software, CSR1000V Software (X86_64_LINUX_IOSD-UNIVERSALK9-M),\
         \ Version 15.4(1)S2, RELEASE SOFTWARE (fc3)\r\nTechnical Support: http://www.cisco.com/techsupport\r\
@@ -70,5 +79,5 @@ ansible_facts:
     ansible_syslocation: ''
     ansible_sysname: ISP3.myansibletest.lab
     ansible_sysobjectid: 1.3.6.1.4.1.9.1.1537
-    ansible_sysuptime: '748091'
+    ansible_sysuptime: '1609129'
 changed: false

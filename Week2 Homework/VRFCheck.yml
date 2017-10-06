@@ -12,5 +12,5 @@
       commands:
         - "show run vrf | inc ^ip vrf "
     register: vrfvar
-  - set_fact: vrf_var="{% set r = vrfvar.stdout_lines %}{{ r | regex_replace('ip vrf ') }}"
-#  - debug: var=vrf_var
+  - set_fact: vrf_var="{% set r = vrfvar.stdout[0] %}{{ r | regex_replace('ip vrf ') }}"
+  # - debug: var=vrf_var

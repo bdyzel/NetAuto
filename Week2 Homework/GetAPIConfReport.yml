@@ -1,0 +1,18 @@
+#
+# Get Summary BGP Neighbor report
+#
+---
+- hosts: isp3
+  gather_facts: false
+  connection: local
+
+  tasks:
+  - ios_command:
+      commands:
+        - "show virtual-service detail"
+    register: vrapi
+
+  - name: Save Detail to API_Report
+    copy:
+      content: "{{ vrapi.stdout[0] }}"
+      dest: './API_Report/API_{{ inventory_hostname }}.log'

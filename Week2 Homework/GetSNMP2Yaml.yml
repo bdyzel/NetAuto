@@ -28,7 +28,7 @@
   - name: Save SNMP_Facts to YML files
     copy:
       content: "{{snmpfacts|to_nice_yaml(indent=4)}}"
-      dest: './SNMP_Data/SNMPFacts_{{inventory_hostname}}.yml'
+      dest: './SNMP_Data/SNMPFacts_{{ansible_sysname}}.yml'
 
   - name: Save IOS_Facts to YML files
     copy:

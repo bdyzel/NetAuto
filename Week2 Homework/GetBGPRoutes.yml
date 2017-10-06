@@ -34,7 +34,6 @@
         - "sho ip bgp | beg Network"
     register: bgproutes
     when: vrf_var ==""
-#  - debug: var=bgproutes
   - copy:
       content: "{{ bgproutes.stdout[0] }}"
       dest: './BGP_Routes/BGPRoutes_{{ inventory_hostname }}.log'

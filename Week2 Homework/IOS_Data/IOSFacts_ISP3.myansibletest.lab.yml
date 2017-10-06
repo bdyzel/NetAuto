@@ -5,19 +5,42 @@ ansible_facts:
     - 172.16.230.3
     - 172.16.0.13
     ansible_net_all_ipv6_addresses: []
-    ansible_net_config: "Building configuration...\n\nCurrent configuration : 2268\
-        \ bytes\n!\n! Last configuration change at 06:34:54 UTC Fri Oct 6 2017\n!\n\
-        version 15.4\nservice timestamps debug datetime msec\nservice timestamps log\
-        \ datetime msec\nno platform punt-keepalive disable-kernel-core\nplatform\
-        \ console serial\n!\nhostname ISP3\n!\nboot-start-marker\nboot-end-marker\n\
+    ansible_net_config: "Building configuration...\n\nCurrent configuration : 4187\
+        \ bytes\n!\n! Last configuration change at 10:13:00 UTC Fri Oct 6 2017\n!\n\
+        version 15.4\nservice timestamps debug uptime\nservice timestamps log uptime\n\
+        service password-encryption\nno platform punt-keepalive disable-kernel-core\n\
+        platform console serial\n!\nhostname ISP3\n!\nboot-start-marker\nboot-end-marker\n\
         !\n!\nvrf definition Mgmt-intf\n !\n address-family ipv4\n exit-address-family\n\
         \ !\n address-family ipv6\n exit-address-family\n!\nenable secret 5 $1$LKtY$4clclxosUeMv7p8x8GbZj.\n\
-        !\nno aaa new-model\n!\nip vrf ISP3\n rd 1000:1\n!\n!\n!\n!\n!\n!\n!\n\n\n\
-        ip domain name myansibletest.lab\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nsubscriber\
-        \ templating\nmultilink bundle-name authenticated\n!\n!\nlicense udi pid CSR1000V\
-        \ sn 9WPCNVH7RSW\n!\nusername sshisp3 privilege 15 password 0 ispkey3\n!\n\
-        redundancy\n mode none\n!\n!\n!\nip ssh version 2\n!\n!\n!\n!\ninterface Loopback0\n\
-        \ ip vrf forwarding ISP3\n ip address 172.16.3.254 255.255.255.255\n!\ninterface\
+        !\n!\ntransport-map type persistent webui https-webui\n secure-server\n!\n\
+        no aaa new-model\n!\nip vrf ISP3\n rd 1000:1\n!\n!\n!\n!\n!\n!\n!\n\n\nip\
+        \ domain name myansibletest.lab\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nsubscriber\
+        \ templating\nmultilink bundle-name authenticated\n!\ncrypto pki trustpoint\
+        \ TP-self-signed-1412609892\n enrollment selfsigned\n subject-name cn=IOS-Self-Signed-Certificate-1412609892\n\
+        \ revocation-check none\n rsakeypair TP-self-signed-1412609892\n!\n!\ncrypto\
+        \ pki certificate chain TP-self-signed-1412609892\n certificate self-signed\
+        \ 01\n  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030\
+        \ \n  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274\
+        \ \n  69666963 6174652D 31343132 36303938 3932301E 170D3137 31303036 30393432\
+        \ \n  35315A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649\
+        \ \n  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 34313236\
+        \ \n  30393839 3230819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281\
+        \ \n  8100A015 95A3C985 3EC5DC13 AD545BE9 422FB951 FE10689C B13A39FF 3A3A9F6D\
+        \ \n  3A1F5E0C D88CCC16 11CF9B63 12438F33 45B10040 AB2F0D77 DC290A92 E9703D68\
+        \ \n  EC6A3794 65531C96 60B315F7 B474CE80 678B4D87 971B1D52 1A1516D8 C2606A13\
+        \ \n  C83C27CA FEB67656 27280ABC 6DB89360 146F06D8 AC2ECCCF 4369A9FF 6D911D56\
+        \ \n  A9BB0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603\
+        \ \n  551D2304 18301680 14667CFC CBC504BF 79D9412C 0B7A5233 986309C1 A3301D06\
+        \ \n  03551D0E 04160414 667CFCCB C504BF79 D9412C0B 7A523398 6309C1A3 300D0609\
+        \ \n  2A864886 F70D0101 05050003 81810097 0E97B2D7 E3B4E564 CBA20243 B18FA4F5\
+        \ \n  23CC8FD4 4F349AD8 174531C3 8F0C76A6 FD27A309 814AC90D 03F3BA21 B14C1A92\
+        \ \n  844E9A37 425AD639 7A027EF6 BC8E554C 86A74CC1 629F5EE9 8CAF3D3C 132ACDEE\
+        \ \n  C82EF763 DD1E614C DB9BBDD1 B97BA2BD 43BB6441 363F8BE4 D3747697 7A9CD4F3\
+        \ \n  2A8BBF21 4226B720 1F8E311B A492FE\n  \tquit\nlicense udi pid CSR1000V\
+        \ sn 9WPCNVH7RSW\n!\nusername sshisp3 privilege 15 password 7 060F1C31474B104A\n\
+        !\nredundancy\n mode none\n!\n!\n!\nip ssh version 2\n!\n!\n!\n!\ninterface\
+        \ Loopback0\n ip vrf forwarding ISP3\n ip address 172.16.3.254 255.255.255.255\n\
+        !\ninterface VirtualPortGroup13\n ip unnumbered GigabitEthernet3\n!\ninterface\
         \ GigabitEthernet1\n ip vrf forwarding ISP3\n ip address 172.16.3.3 255.255.255.254\n\
         \ negotiation auto\n!\ninterface GigabitEthernet2\n ip vrf forwarding ISP3\n\
         \ ip address 172.16.230.3 255.255.255.254\n negotiation auto\n!\ninterface\
@@ -29,14 +52,17 @@ ansible_facts:
         \ !\n address-family ipv4 vrf ISP3\n  redistribute connected\n  neighbor 172.16.3.2\
         \ remote-as 65001\n  neighbor 172.16.3.2 activate\n  neighbor 172.16.230.2\
         \ remote-as 65004\n  neighbor 172.16.230.2 activate\n exit-address-family\n\
-        !\n!\nvirtual-service csr_mgmt\n!\nip forward-protocol nd\n!\nno ip http server\n\
-        no ip http secure-server\n!\n!\nsnmp-server community autolab RO\n!\n!\ncontrol-plane\n\
-        !\n!\nline con 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n\
-        \ stopbits 1\nline aux 0\n stopbits 1\nline vty 0\n privilege level 15\n password\
-        \ 7 05080F1C224342001700\n login local\n transport input ssh\nline vty 1\n\
-        \ privilege level 15\n password 7 05080F1C224342001700\n login local\n length\
-        \ 0\n transport input ssh\nline vty 2 4\n privilege level 15\n password 7\
-        \ 05080F1C224342001700\n login local\n transport input ssh\n!\n!\nend"
+        !\n!\n!\nvirtual-service csrv_mgmt\n vnic gateway VirtualPortGroup13\n  guest\
+        \ ip address 172.16.0.200\n!\nip forward-protocol nd\n!\nno ip http server\n\
+        ip http secure-server\nip route 172.16.0.200 255.255.255.255 VirtualPortGroup13\n\
+        !\n!\nsnmp-server community autolab RO\n!\n!\ncontrol-plane\n!\n!\nline con\
+        \ 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits\
+        \ 1\nline aux 0\n stopbits 1\nline vty 0\n privilege level 15\n password 7\
+        \ 05080F1C224342001700\n login local\n transport input ssh\nline vty 1\n privilege\
+        \ level 15\n password 7 05080F1C224342001700\n login local\n length 0\n transport\
+        \ input ssh\nline vty 2 4\n privilege level 15\n password 7 05080F1C224342001700\n\
+        \ login local\n transport input ssh\n!\ntransport type persistent webui input\
+        \ https-webui\n!\n!\nend"
     ansible_net_filesystems:
     - 'bootflash:'
     ansible_net_gather_subset:
@@ -99,6 +125,17 @@ ansible_facts:
             mtu: 1514
             operstatus: up
             type: null
+        VirtualPortGroup13:
+            bandwidth: 2500000
+            description: null
+            duplex: null
+            ipv4: null
+            lineprotocol: 'down '
+            macaddress: 001e.e50c.c7bd
+            mediatype: null
+            mtu: 1500
+            operstatus: down
+            type: Virtual Port Group
     ansible_net_memfree_mb: 1920541
     ansible_net_memtotal_mb: 2179356
     ansible_net_model: null

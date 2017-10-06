@@ -110,5 +110,5 @@ ansible_facts:
     ansible_syslocation: ''
     ansible_sysname: EDG-RT1.myansibletest.lab
     ansible_sysobjectid: 1.3.6.1.4.1.9.1.222
-    ansible_sysuptime: '755957'
+    ansible_sysuptime: '1617576'
 changed: false
