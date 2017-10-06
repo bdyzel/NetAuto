@@ -27,8 +27,8 @@ A substitute Firewall may still present itself in order to test a REST API deplo
    * Get VRF Name of devices if VRF is being used on a Device.   
      * Additional consideration may be required for when there is more than one VRF on a device, this functionality is not yet built in or required for this lab.
   * Get results of BGP show commands for the routing table and summary of the BGP relationships  
-  * (new) Deploy minor config changes
-  * (new) Get Results from CSR Router Rest API
+  * -new- Deploy minor config changes
+  * -new- Get Results from CSR Router Rest API
 
 * ## Lab Diagram
 ![Lab Diagram](https://github.com/bdyzel/NetAuto/blob/master/Lab%20Layout.png?raw=true "Optional Title")
