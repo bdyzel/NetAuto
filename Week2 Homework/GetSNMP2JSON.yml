@@ -1,0 +1,36 @@
+#
+# Get SNMP from all devices and write to Yaml files.
+#
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+  vars:
+  - results: results
+
+  tasks:
+  - name: Get IOS Facts
+    ios_facts:
+      gather_subset: all
+    register: iosfacts
+
+  - file: path={{results}} state=directory
+    run_once: true
+  - file: path={{results}}/uptime.log state=touch
+    run_once: true
+  - name: Get SNMP Facts
+    snmp_facts:
+      host: "{{ inventory_hostname }}"
+      version: v2
+      community: autolab
+    register: snmpfacts
+
+  - name: Save SNMP_Facts to JSON files
+    copy:
+      content: "{{snmpfacts | to_json}}"
+      dest: './SNMP_Facts_JSON/SNMP_{{ansible_sysname}}.json'
+
+  - name: Save IOS_Facts to JSON files
+    copy:
+      content: "{{iosfacts | to_json}}"
+      dest: './IOS_Data_JSON/IOSFacts_{{ansible_sysname}}.json'
