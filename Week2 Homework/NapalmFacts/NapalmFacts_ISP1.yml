@@ -1,0 +1,90 @@
+ansible_facts:
+    napalm_bgp_neighbors:
+        global:
+            peers: {}
+            router_id: 172.16.0.11
+    napalm_facts:
+        fqdn: ISP1.myansibletest.lab
+        hostname: ISP1
+        interface_list:
+        - Ethernet0/0
+        - GigabitEthernet0/0
+        - GigabitEthernet1/0
+        - GigabitEthernet2/0
+        - GigabitEthernet3/0
+        - GigabitEthernet4/0
+        - Loopback0
+        model: 7206VXR
+        os_version: 7200 Software (C7200-ADVIPSERVICESK9-M), Version 15.0(1)M, RELEASE
+            SOFTWARE (fc2)
+        serial_number: '4279256517'
+        uptime: 6540
+        vendor: Cisco
+    napalm_fqdn: ISP1.myansibletest.lab
+    napalm_hostname: ISP1
+    napalm_interface_list:
+    - Ethernet0/0
+    - GigabitEthernet0/0
+    - GigabitEthernet1/0
+    - GigabitEthernet2/0
+    - GigabitEthernet3/0
+    - GigabitEthernet4/0
+    - Loopback0
+    napalm_interfaces:
+        Ethernet0/0:
+            description: ''
+            is_enabled: false
+            is_up: false
+            last_flapped: -1.0
+            mac_address: CA:02:26:0C:00:06
+            speed: 100
+        GigabitEthernet0/0:
+            description: ''
+            is_enabled: true
+            is_up: true
+            last_flapped: -1.0
+            mac_address: CA:02:26:0C:00:08
+            speed: 1000
+        GigabitEthernet1/0:
+            description: ''
+            is_enabled: true
+            is_up: true
+            last_flapped: -1.0
+            mac_address: CA:02:26:0C:00:1C
+            speed: 1000
+        GigabitEthernet2/0:
+            description: ''
+            is_enabled: false
+            is_up: false
+            last_flapped: -1.0
+            mac_address: CA:02:26:0C:00:38
+            speed: 1000
+        GigabitEthernet3/0:
+            description: ''
+            is_enabled: false
+            is_up: false
+            last_flapped: -1.0
+            mac_address: CA:02:26:0C:00:54
+            speed: 1000
+        GigabitEthernet4/0:
+            description: mgnt-oob-isp1
+            is_enabled: true
+            is_up: true
+            last_flapped: -1.0
+            mac_address: CA:02:26:0C:00:70
+            speed: 1000
+        Loopback0:
+            description: ''
+            is_enabled: true
+            is_up: true
+            last_flapped: -1.0
+            mac_address: ''
+            speed: 8000
+    napalm_model: 7206VXR
+    napalm_os_version: 7200 Software (C7200-ADVIPSERVICESK9-M), Version 15.0(1)M,
+        RELEASE SOFTWARE (fc2)
+    napalm_serial_number: '4279256517'
+    napalm_uptime: 6540
+    napalm_vendor: Cisco
+changed: false
+failed: false
