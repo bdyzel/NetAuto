@@ -1,0 +1,13 @@
+---
+
+- hosts: isp3
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - imc_rest:
+         action: get
+         uri: /api/v1/global/running-config
+         host: "{{ inventory_hostname }}"
+         username: "sshisp3"
+         password: "shhkey3"

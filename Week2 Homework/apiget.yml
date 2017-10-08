@@ -1,0 +1,15 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: get something
+      uri:
+        url: "https://172.16.0.200/api/v1/global/running-config"
+        method: GET
+        user: sshisp3
+        password: sshkey3
+        return_content: yes
+        body_format: json
