@@ -42,7 +42,7 @@ ansible_facts:
         os_version: CSR1000V Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 15.4(1)S2,
             RELEASE SOFTWARE (fc3)
         serial_number: 9WPCNVH7RSW
-        uptime: 8160
+        uptime: 1920
         vendor: Cisco
     napalm_fqdn: ISP3.myansibletest.lab
     napalm_hostname: ISP3
@@ -92,7 +92,7 @@ ansible_facts:
     napalm_os_version: CSR1000V Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version
         15.4(1)S2, RELEASE SOFTWARE (fc3)
     napalm_serial_number: 9WPCNVH7RSW
-    napalm_uptime: 8160
+    napalm_uptime: 1920
     napalm_vendor: Cisco
 changed: false
 failed: false

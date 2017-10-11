@@ -18,7 +18,7 @@ ansible_facts:
         os_version: 7200 Software (C7200-ADVIPSERVICESK9-M), Version 15.0(1)M, RELEASE
             SOFTWARE (fc2)
         serial_number: '4279256517'
-        uptime: 6240
+        uptime: 1440
         vendor: Cisco
     napalm_fqdn: ISP2.myansibletest.lab
     napalm_hostname: ISP2
@@ -84,7 +84,7 @@ ansible_facts:
     napalm_os_version: 7200 Software (C7200-ADVIPSERVICESK9-M), Version 15.0(1)M,
         RELEASE SOFTWARE (fc2)
     napalm_serial_number: '4279256517'
-    napalm_uptime: 6240
+    napalm_uptime: 1440
     napalm_vendor: Cisco
 changed: false
 failed: false
