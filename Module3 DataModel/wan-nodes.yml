@@ -1,0 +1,79 @@
+#WAN Nodes
+---
+
+nodes:
+
+  R1:
+    mgmt: 172.16.0.11
+    rid:
+    bgpas: 18001
+    ibgp:
+      - { rid: CR1, ip: "10.10.0.0" }
+      - { rid: CR2, ip: "10.10.1.0" }
+    i-int:
+      GigabitEthernet3/0.1: { ip: 10.10.0.1}
+      GigabitEthernet4/0.1: { ip: 10.10.1.1}
+
+    ebgp:
+      - { rid: PE1, as: 17001, ip: "10.20.0.0" }
+      - { rid: PE2, as: 17001, ip: "10.20.1.0" }
+    e-int:
+      GigabitEthernet1/0.1: { ip: 10.20.0.1 }
+      GigabitEthernet2/0.1: { ip: 10.20.1.1 }
+
+
+  R2:
+    mgmt: 172.16.0.12
+    rid:
+    bgpas: 18001
+    ibgp:
+      - { rid: CR1, ip: "10.10.0.2" }
+      - { rid: CR2, ip: "10.10.1.2" }
+    i-int:
+      GigabitEthernet3/0.1: { ip: 10.10.0.3 }
+      GigabitEthernet4/0.1: { ip: 10.10.1.3 }
+
+    ebgp:
+      - { rid: PE1, as: 17001, ip: "10.20.0.2" }
+      - { rid: PE2, as: 17001, ip: "10.20.1.2" }
+    e-int:
+      GigabitEthernet1/0.1: { ip: 10.20.0.3 }
+      GigabitEthernet2/0.1: { ip: 10.20.1.3 }
+
+
+  R3:
+    mgmt: 172.16.0.13
+    rid:
+    bgpas: 18001
+    ibgp:
+      - { rid: CR1, ip: "10.10.0.4" }
+      - { rid: CR2, ip: "10.10.1.4" }
+    i-int:
+      GigabitEthernet3/0.1: { ip: 10.10.0.5 }
+      GigabitEthernet4/0.1: { ip: 10.10.1.5 }
+
+    ebgp:
+      - { rid: PE1, as: 17001, ip: "10.20.0.4" }
+      - { rid: PE2, as: 17001, ip: "10.20.1.4" }
+    e-int:
+      GigabitEthernet1/0.1: { ip: 10.20.0.5 }
+      GigabitEthernet2/0.1: { ip: 10.20.1.5 }
+
+
+  R4:
+    mgmt: 172.16.0.14
+    rid:
+    bgpas: 18001
+    ibgp:
+      - { rid: CR1, ip: "10.10.0.6" }
+      - { rid: CR2, ip: "10.10.1.6" }
+    i-int:
+      GigabitEthernet3/0.1: { ip: 10.10.0.7 }
+      GigabitEthernet4/0.1: { ip: 10.10.1.7 }
+
+    ebgp:
+      - { rid: PE1, as: 17001, ip: "10.20.0.6" }
+      - { rid: PE2, as: 17001, ip: "10.20.1.6" }
+    internal:
+      GigabitEthernet1/0.1: { ip: 10.20.0.7 }
+      GigabitEthernet2/0.1: { ip: 10.20.1.7 }
