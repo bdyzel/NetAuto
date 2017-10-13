@@ -23,12 +23,15 @@ With the swap out I would like to automate the process in order to automatically
   * -new- Deploy minor config changes
   * -new- Gather facts from all Routers using Napalm.
   * for more details see the Module2 Folder
+  * ![Lab Diagram](https://github.com/bdyzel/NetAuto/blob/master/Lab%20LayoutModule2.png?raw=true "Optional Title")
   
  ##### **Module 3**
 * Build the data Model (in progress)
    * Internet Access via HA Multi-Site BGP (in progress)
 * Selecting the Data Stores  (in progress)
    * (in progress)
+   
+  * ![Lab Diagram](https://github.com/bdyzel/NetAuto/blob/master/Lab%20LayoutModule3.png?raw=true "Optional Title")
 
-* ## Lab Diagram (in progress)
-![Lab Diagram](https://github.com/bdyzel/NetAuto/blob/master/Lab%20Layout.png?raw=true "Optional Title")
+
+
