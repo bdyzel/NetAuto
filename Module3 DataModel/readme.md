@@ -1,4 +1,9 @@
- ##### **Module 3**
+ # **Module 3**
+ 
+The function of the playbooks will be to deploy and update route-map filters on the BGP environments for both the WAN and CAMPUS infrastructure. 
+
+
+
 * Build the data Model (in progress)
    * Internet Access via HA Multi-Site BGP (in progress)
 * Selecting the Data Stores  (in progress)
