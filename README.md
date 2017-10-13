@@ -1,4 +1,4 @@
-# Network Automation Course
+# Network Automation Course - Hands On labs
 * ## Description
 This git repo is a mix of some testing scripts used to get familiarize with Ansible, YAML, Jinja2, etc, these items will all be placed under various Module sub folders as we progress with the course.
 
