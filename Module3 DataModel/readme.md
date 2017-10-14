@@ -2,8 +2,8 @@
 
 ### **Overview**
 
-The function of the playbooks will be to deploy and update route-map filters on the BGP environments for both the WAN and CAMPUS infrastructure.
-(*the public nodes do not form part of the playbooks. If references to the public nodes are seen it's because of a possible use case to include the Public Nodes in the playbooks for verification reports*)
+The function of the playbooks will be to build data models for the BGP environment used on both the WAN and CAMPUS infrastructure.
+(*the public nodes do not form part of the playbooks. If references to the public nodes are seen it's because of a possible use case to include the Public Nodes when initial deployment is done and create reports for verification reports*)
 
 The lab diagram is there to give a High level visual representation of the Infrastructure Model.
 ![Module 3 Lab Diagram](https://github.com/bdyzel/NetAuto/blob/master/Lab%20LayoutModule3.png?raw=true "Optional Title")
@@ -27,9 +27,10 @@ The ``cdmod.yml`` (*Create Data Model*) playbook transforms the data (described 
 * **Address Range Prefix list**
 The ``prefixupd.yml`` playbook transforms these data models (described in more details below) into per-node data models (stored in ``nodes.yml``) that are easier to work with when generating device configurations.
 
-  * **configs**     - create the configuration files in ``dmconfigs`` directory
-  * **deploy**     - deploy the configuration files from the ``dmconfigs`` directory to the nodes
-  * **verify**     - Self explanatory
+  * **configs**    - create the configuration files in ``dmconfigs`` directory
+  * **_Future requirement_** **deploy**     - deploy the configuration files from the ``dmconfigs`` directory to the nodes
+  * **_Future requirement_**  **verify**     - Self explanatory
 
-Playbooks in the bgp, eigrp and vpnv4 directories reference the relevant data models from ``nodes.yml``, this will create device configurations which is then deployed per-node.
-After each deployment a verification is done to confirm adjacencies and newly added prefixes.
+Playbooks in the bgp, eigrp and vpnv4 directories reference the relevant data models from ``nodes.yml``, this will create device configurations which can be referenced for per-node deployment.
+
+**_Future requirement_** After each deployment a verification is done to confirm adjacencies and newly added prefixes.
