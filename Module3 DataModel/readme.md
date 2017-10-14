@@ -22,15 +22,17 @@ The infrastructure model(*``cloth.yml``*) provides a list of the following;
 
 ### **Services**
 #### Automatically create data model
-The ``cdmod.yml`` (*Create Data Model*) playbook transforms the data (described in more details below) into per-node data models (*stored in ``nodes.yml``*) that are easier to work with when generating device configurations.
+The ``cdmod.yml`` (*Create Data Model*) playbook transforms the data () into per-node data models (*stored in ``nodes.yml``*).
 
 * **Address Range Prefix list**
-The ``prefixupd.yml`` playbook transforms these data models (described in more details below) into per-node data models (stored in ``nodes.yml``) that are easier to work with when generating device configurations.
+The ``prefixupd.yml`` playbook transforms the data () into per-node data models (stored in ``.yml``).
 
   * **configs**    - create the configuration files in ``dmconfigs`` directory
-  * **_Future requirement_** **deploy**     - deploy the configuration files from the ``dmconfigs`` directory to the nodes
-  * **_Future requirement_**  **verify**     - Self explanatory
+  * **_Future requirement_**
+       * **deploy**     - deploy the configuration files from the ``dmconfigs`` directory to the nodes
+  * **_Future requirement_**
+       * **verify**     - Self explanatory
 
-Playbooks in the bgp, eigrp and vpnv4 directories reference the relevant data models from ``nodes.yml``, this will create device configurations which can be referenced for per-node deployment.
+  * Playbooks in the bgp, eigrp and vpnv4 directories reference the relevant data models from ``nodes.yml``, this will create device configurations which can be referenced for per-node deployment.
 
-**_Future requirement_** After each deployment a verification is done to confirm adjacencies and newly added prefixes.
+  * **_Future requirement_** After each deployment a verification is done to confirm adjacencies and newly added prefixes.
