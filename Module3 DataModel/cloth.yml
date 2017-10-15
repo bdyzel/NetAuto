@@ -4,23 +4,43 @@
 ---
 nodes:
   - name: R1
-    mgmt: 172.16.0.11
+    mgmta: 172.16.0.11
+    mgmtb: 10.99.0.1
+    ntype: wannode
   - name: R2
-    mgmt: 172.16.0.12
+    mgmta: 172.16.0.12
+    mgmtb: 10.99.0.2
+    ntype: wannode
   - name: R3
-    mgmt: 172.16.0.13
+    mgmta: 172.16.0.13
+    mgmtb: 10.99.0.3
+    ntype: wannode
   - name: R4
-    mgmt: 172.16.0.14
+    mgmta: 172.16.0.14
+    mgmtb: 10.99.0.4
+    ntype: wannode
+
   - name: CR1
-    mgmt: 172.16.0.15
+    mgmta: 172.16.0.15
+    mgmtb: 10.99.0.5
+    ntype: campus-node
   - name: CR2
-    mgmt: 172.16.0.16
+    mgmta: 172.16.0.16
+    mgmtb: 10.99.0.6
+    ntype: campus-node
+
   - name: PE1
-    mgmt: 172.16.0.17
+    mgmta: 172.16.0.17
+    mgmtb: 10.199.0.1
+    ntype: public-node
   - name: PE2
-    mgmt: 172.16.0.18
+    mgmta: 172.16.0.18
+    mgmtb: 10.199.0.2
+    ntype: public-node
   - name: SIM
-    mgmt: 172.16.0.19
+    mgmta: 172.16.0.19
+    mgmtb: 10.199.0.3
+    ntype: public-node
 
 asn:
   18001:
@@ -28,50 +48,46 @@ asn:
   17001:
     members: [ PE1,PE2,SIM ]
 
-ibgpcon:
-  - {left: R1, left_ip: 10.10.0.1, left_port: GigabitEthernet3/0,
-     right: CR1, right_ip: 10.10.0.0, right_port: GigabitEthernet1/0}
-  - {left: R1, left_ip: 10.10.1.1, left_port: GigabitEthernet4/0,
-     right: CR2, right_ip: 10.10.1.0, right_port: GigabitEthernet1/0}
-  - {left: R2, left_ip: 10.10.0.3, left_port: GigabitEthernet3/0,
-     right: CR1, right_ip: 10.10.0.2, right_port: GigabitEthernet2/0}
-  - {left: R2, left_ip: 10.10.1.3, left_port: GigabitEthernet4/0,
-     right: CR2, right_ip: 10.10.1.2, right_port: GigabitEthernet2/0}
-  - {left: R3, left_ip: 10.10.0.5, left_port: GigabitEthernet3/0,
-     right: CR1, right_ip: 10.10.0.4, right_port: GigabitEthernet3/0}
-  - {left: R3, left_ip: 10.10.1.5, left_port: GigabitEthernet4/0,
-     right: CR2, right_ip: 10.10.1.4, right_port: GigabitEthernet3/0}
-  - {left: R4, left_ip: 10.10.0.7, left_port: GigabitEthernet3/0,
-     right: CR1, right_ip: 10.10.0.6, right_port: GigabitEthernet4/0}
-  - {left: R4, left_ip: 10.10.1.7, left_port: GigabitEthernet4/0,
-     right: CR2, right_ip: 10.10.1.6, right_port: GigabitEthernet4/0}
-  - {left: CR1, left_ip: 10.5.0.0, left_port: GigabitEthernet5/0,
-     right: CR2, right_ip: 10.5.0.1, right_port: GigabitEthernet5/0}
-  - {left: PE1, left_ip: 10.20.0.8, left_port: GigabitEthernet5/0,
-     right: SIM, right_ip: 10.20.0.9, right_port: GigabitEthernet1/0}
-  - {left: PE2, left_ip: 10.20.1.8, left_port: GigabitEthernet5/0,
-     right: SIM, right_ip: 10.20.1.9, right_port: GigabitEthernet2/0}
+intbgp:
+  - {west: R1, west_as: '18001', west_ip: 10.10.0.1, west_port: Gi3/0,
+     east: CR1, east_as: '18001', east_ip: 10.10.0.0, east_port: Gi1/0}
+  - {west: R1, west_as: '18001', west_ip: 10.10.1.1, west_port: Gi4/0,
+     east: CR2, east_as: '18001', east_ip: 10.10.1.0, east_port: Gi1/0}
+  - {west: R2, west_as: '18001', west_ip: 10.10.0.3, west_port: Gi3/0,
+     east: CR1, east_as: '18001', east_ip: 10.10.0.2, east_port: Gi2/0}
+  - {west: R2, west_as: '18001', west_ip: 10.10.1.3, west_port: Gi4/0,
+     east: CR2, east_as: '18001', east_ip: 10.10.1.2, east_port: Gi2/0}
+  - {west: R3, west_as: '18001', west_ip: 10.10.0.5, west_port: Gi3/0,
+     east: CR1, east_as: '18001', east_ip: 10.10.0.4, east_port: Gi3/0}
+  - {west: R3, west_as: '18001', west_ip: 10.10.1.5, west_port: Gi4/0,
+     east: CR2, east_as: '18001', east_ip: 10.10.1.4, east_port: Gi3/0}
+  - {west: R4, west_as: '18001', west_ip: 10.10.0.7, west_port: Gi3/0,
+     east: CR1, east_as: '18001', east_ip: 10.10.0.6, east_port: Gi4/0}
+  - {west: R4, west_as: '18001', west_ip: 10.10.1.7, west_port: Gi4/0,
+     east: CR2, east_as: '18001', east_ip: 10.10.1.6, east_port: Gi4/0}
+  - {west: CR1, west_as: '18001', west_ip: 10.5.0.0, west_port: Gi5/0,
+     east: CR2, east_as: '18001', east_ip: 10.5.0.1, east_port: Gi5/0}
+  - {west: PE1, west_as: '17001', west_ip: 10.20.0.8, west_port: Gi5/0,
+     east: SIM, east_as: '17001', east_ip: 10.20.0.9, east_port: Gi1/0}
+  - {west: PE2, west_as: '17001', west_ip: 10.20.1.8, west_port: Gi5/0,
+     east: SIM, east_as: '17001', east_ip: 10.20.1.9, east_port: Gi2/0}
 
-ebgpcon:
-  - {left: R1, left_ip: 10.20.0.1, left_port: GigabitEthernet1/0,
-     right: PE1, right_ip: 10.20.0.0, right_port: GigabitEthernet1/0}
-  - {left: R1, left_ip: 10.20.1.1, left_port: GigabitEthernet2/0,
-     right: PE2, right_ip: 10.20.1.0, right_port: GigabitEthernet1/0}
-  - {left: R2, left_ip: 10.20.0.3, left_port: GigabitEthernet1/0,
-     right: PE1, right_ip: 10.20.0.2, right_port: GigabitEthernet2/0}
-  - {left: R2, left_ip: 10.20.1.3, left_port: GigabitEthernet2/0,
-     right: PE2, right_ip: 10.20.1.2, right_port: GigabitEthernet2/0}
-  - {left: R3, left_ip: 10.20.0.5, left_port: GigabitEthernet1/0,
-     right: PE1, right_ip: 10.20.0.4, right_port: GigabitEthernet3/0}
-  - {left: R3, left_ip: 10.20.1.5, left_port: GigabitEthernet2/0,
-     right: PE1, right_ip: 10.20.1.4, right_port: GigabitEthernet3/0}
-  - {left: R4, left_ip: 10.20.0.7, left_port: GigabitEthernet1/0,
-     right: PE1, right_ip: 10.20.0.6, right_port: GigabitEthernet4/0}
-  - {left: R4, left_ip: 10.20.1.7, left_port: GigabitEthernet2/0,
-     right: PE2, right_ip: 10.20.1.6, right_port: GigabitEthernet4/0}
+extbgp:
+  - {west: R1, west_as: '18001', west_ip: 10.20.0.1, west_port: Gi1/0,
+     east: PE1, east_as: '17001', east_ip: 10.20.0.0, east_port: Gi1/0}
+  - {west: R1, west_as: '18001', west_ip: 10.20.1.1, west_port: Gi2/0,
+     east: PE2, east_as: '17001', east_ip: 10.20.1.0, east_port: Gi1/0}
+  - {west: R2, west_as: '18001', west_ip: 10.20.0.3, west_port: Gi1/0,
+     east: PE1, east_as: '17001', east_ip: 10.20.0.2, east_port: Gi2/0}
+  - {west: R2, west_as: '18001', west_ip: 10.20.1.3, west_port: Gi2/0,
+     east: PE2, east_as: '17001', east_ip: 10.20.1.2, east_port: Gi2/0}
+  - {west: R3, west_as: '18001', west_ip: 10.20.0.5, west_port: Gi1/0,
+     east: PE1, east_as: '17001', east_ip: 10.20.0.4, east_port: Gi3/0}
+  - {west: R3, west_as: '18001', west_ip: 10.20.1.5, west_port: Gi2/0,
+     east: PE2, east_as: '17001', east_ip: 10.20.1.4, east_port: Gi3/0}
+  - {west: R4, west_as: '18001', west_ip: 10.20.0.7, west_port: Gi1/0,
+     east: PE1, east_as: '17001', east_ip: 10.20.0.6, east_port: Gi4/0}
+  - {west: R4, west_as: '18001', west_ip: 10.20.1.7, west_port: Gi2/0,
+     east: PE2, east_as: '17001', east_ip: 10.20.1.6, east_port: Gi4/0}
 
-igpcon:
-  - {left: E1, left_as: '64500', left_ip: 10.0.0.25, left_port: GigabitEthernet0/3,
-     right: E3, right_as: '64501', right_ip: 10.0.0.26, right_port: GigabitEthernet0/1}
-  - {left: E2, left_as: '64500', left_ip: 10.0.0.33, left_port: GigabitEthernet0/3,
-     right: E4, right_as: '64501', right_ip: 10.0.0.34, right_port: GigabitEthernet0/1}
+services: [ IPv4, BGP ]

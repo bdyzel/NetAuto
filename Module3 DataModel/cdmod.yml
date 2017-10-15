@@ -4,6 +4,4 @@
   vars_files: [ cloth.yml ]
   tasks:
   - name:   Auto create nodes data model
-    template:
-      src=dmod/dmod.j2 
-      dest=./nodes.yml
+    template: src=dmod/dmod.j2 dest=./nodes.yml
