@@ -6,19 +6,19 @@ nodes:
   - name: R1
     mgmta: 172.16.0.11
     mgmtb: 10.99.0.1
-    ntype: wannode
+    ntype: wan-node
   - name: R2
     mgmta: 172.16.0.12
     mgmtb: 10.99.0.2
-    ntype: wannode
+    ntype: wan-node
   - name: R3
     mgmta: 172.16.0.13
     mgmtb: 10.99.0.3
-    ntype: wannode
+    ntype: wan-node
   - name: R4
     mgmta: 172.16.0.14
     mgmtb: 10.99.0.4
-    ntype: wannode
+    ntype: wan-node
 
   - name: CR1
     mgmta: 172.16.0.15

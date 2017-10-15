@@ -3,31 +3,29 @@
 #
 # Under the 'nodes:' there are different sub sections listing either the WAN nodes,
 # Campus Nodes, or the Public Nodes, each individual node has the followin:
-# * The 'mgmta' IP address, this is the IP address used by ansible
-# * The 'rid' is the loopback IP address, only used when deploying IBGP configuration
-# * The 'ebgp/ibgp-interfaces' these are the interfaces configured on the node
-# * The 'ebgp/ibgp-links' lists the details of the remote node being connected to
-#  Note!(All IP's are /31 subnets)
+#   * The 'mgmta' IP address, this is the IP address used by ansible
+#   * The 'mgmtb'/'rid' is the loopback IP address, only used when deploying IBGP configuration
+#   * The 'ebgp/ibgp-interfaces' these are the interfaces configured on the node
+#   * The 'ebgp/ibgp-links' lists the details of the remote node being connected to
+#
+# Note!(All IP's are /31 subnets)
 #
 # Abbreviation Index:
-# mgmt = management
-#
-#
-#
-#
-#
+#   mgmt = management
+#   nbr = neighbor
+#   ntype = node type
 {% macro interface_link(name,ip) %}
 {{ name }}: { ip: {{ip}} }{% endmacro %}
-{% macro ibgp_session(to,ip) %}
+{% macro ibgp_link(to,ip) %}
 - { ibgp-nbr: {{to}}, nbr-ip: "{{ip}}" }{% endmacro %}
-{% macro ebgp_session(to,ip,as) %}
+{% macro ebgp_link(to,ip,as) %}
 - { ebgp-nbr: {{to}}, nbr-ip: "{{ip}}", remote-as: {{as}} }{% endmacro %}
 
 ---
 nodes:
     wan-nodes:
 {% for node in nodes %}
-{%  if node.ntype == 'wannode' %}
+{%  if node.ntype == 'wan-node' %}
       {{ node.name }}:
         mgmta: {{ node.mgmta }}
         rid:  {{ node.mgmtb }}
@@ -51,7 +49,7 @@ nodes:
 {%      if link.east == rid.name %}
 {%       with %}
 {%        set remoterid = rid.mgmtb %}
-          {{ ibgp_session(link.east, remoterid ) }}
+          {{ ibgp_link(link.east, remoterid ) }}
 {%       endwith %}
 {%      endif %}
 {%     endfor %}
@@ -60,7 +58,7 @@ nodes:
 {%      if link.west == rid.name %}
 {%       with %}
 {%        set remoterid = rid.mgmtb %}
-          {{ ibgp_session(link.west, remoterid ) }}
+          {{ ibgp_link(link.west, remoterid ) }}
 {%       endwith %}
 {%      endif %}
 {%     endfor %}
@@ -77,9 +75,9 @@ nodes:
         ebgp-links:
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
-          {{ ebgp_session(link.east, link.east_ip, link.east_as ) }}
+          {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}
 {%    elif link.east == node.name %}
-          {{ ebgp_session(link.west, link.west_ip, link.west_as ) }}
+          {{ ebgp_link(link.west, link.west_ip, link.west_as ) }}
 {%    endif %}
 {%   endfor %}
 {%  endif %}
@@ -111,7 +109,7 @@ nodes:
 {%      if link.east == rid.name %}
 {%       with %}
 {%        set remoterid = rid.mgmtb %}
-          {{ ibgp_session(link.east, remoterid ) }}
+          {{ ibgp_link(link.east, remoterid ) }}
 {%       endwith %}
 {%      endif %}
 {%     endfor %}
@@ -120,7 +118,7 @@ nodes:
 {%      if link.west == rid.name %}
 {%       with %}
 {%        set remoterid = rid.mgmtb %}
-          {{ ibgp_session(link.west, remoterid ) }}
+          {{ ibgp_link(link.west, remoterid ) }}
 {%       endwith %}
 {%      endif %}
 {%     endfor %}
@@ -137,9 +135,9 @@ nodes:
         ebgp-links:
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
-          {{ ebgp_session(link.east, link.east_ip, link.east_as ) }}
+          {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}
 {%    elif link.east == node.name %}
-          {{ ebgp_session(link.west, link.west_ip, link.west_as ) }}
+          {{ ebgp_link(link.west, link.west_ip, link.west_as ) }}
 {%    endif %}
 {%   endfor %}
 {%  endif %}
@@ -171,7 +169,7 @@ nodes:
 {%      if link.east == rid.name %}
 {%       with %}
 {%        set remoterid = rid.mgmtb %}
-          {{ ibgp_session(link.east, remoterid ) }}
+          {{ ibgp_link(link.east, remoterid ) }}
 {%       endwith %}
 {%      endif %}
 {%     endfor %}
@@ -180,7 +178,7 @@ nodes:
 {%      if link.west == rid.name %}
 {%       with %}
 {%        set remoterid = rid.mgmtb %}
-          {{ ibgp_session(link.west, remoterid ) }}
+          {{ ibgp_link(link.west, remoterid ) }}
 {%       endwith %}
 {%      endif %}
 {%     endfor %}
@@ -197,9 +195,9 @@ nodes:
         ebgp-links:
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
-          {{ ebgp_session(link.east, link.east_ip, link.east_as ) }}
+          {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}
 {%    elif link.east == node.name %}
-          {{ ebgp_session(link.west, link.west_ip, link.west_as ) }}
+          {{ ebgp_link(link.west, link.west_ip, link.west_as ) }}
 {%    endif %}
 {%   endfor %}
 {%  endif %}

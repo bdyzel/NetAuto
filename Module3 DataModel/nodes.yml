@@ -3,19 +3,17 @@
 #
 # Under the 'nodes:' there are different sub sections listing either the WAN nodes,
 # Campus Nodes, or the Public Nodes, each individual node has the followin:
-# * The 'mgmta' IP address, this is the IP address used by ansible
-# * The 'rid' is the loopback IP address, only used when deploying IBGP configuration
-# * The 'ebgp/ibgp-interfaces' these are the interfaces configured on the node
-# * The 'ebgp/ibgp-links' lists the details of the remote node being connected to
-#  Note!(All IP's are /31 subnets)
+#   * The 'mgmta' IP address, this is the IP address used by ansible
+#   * The 'mgmtb'/'rid' is the loopback IP address, only used when deploying IBGP configuration
+#   * The 'ebgp/ibgp-interfaces' these are the interfaces configured on the node
+#   * The 'ebgp/ibgp-links' lists the details of the remote node being connected to
+#
+# Note!(All IP's are /31 subnets)
 #
 # Abbreviation Index:
-# mgmt = management
-#
-#
-#
-#
-#
+#   mgmt = management
+#   nbr = neighbor
+#   ntype = node type
 
 ---
 nodes:
