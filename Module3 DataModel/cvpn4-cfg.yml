@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  gather_facts: no
+  vars_files: [ nodes.yml ]
+  tasks:
+  - name:   Create VPNV4 Configuration
+    template: src=vpnv4/interfaces-configtest.j2 dest=dmconfig/vnp4.cfg
