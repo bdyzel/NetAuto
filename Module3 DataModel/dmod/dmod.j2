@@ -34,7 +34,7 @@ nodes:
       as:     {{ k }}
 {%     endif %}
 {%   endfor %}
-      ibgp-interfaces:
+      ibgpinterfaces:
 {%   for link in intbgp %}
 {%    if link.west == node.name %}
         {{ interface_link(link.west_port,link.west_ip|default('')) }}
@@ -42,7 +42,7 @@ nodes:
         {{ interface_link(link.east_port,link.east_ip|default('')) }}
 {%    endif %}
 {%   endfor %}
-      ibgp-links:
+      ibgplinks:
 {%   for link in intbgp %}
 {%    if link.west == node.name %}
 {%     for rid in nodes %}
@@ -64,7 +64,7 @@ nodes:
 {%     endfor %}
 {%    endif %}
 {%   endfor %}
-      ebgp-interfaces:
+      ebgpinterfaces:
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
          {{ interface_link(link.west_port,link.west_ip|default('')) }}
@@ -95,7 +95,7 @@ nodes:
       as:     {{ k }}
 {%     endif %}
 {%   endfor %}
-      ibgp-interfaces:
+      ibgpinterfaces:
 {%   for link in intbgp %}
 {%    if link.west == node.name %}
         {{ interface_link(link.west_port,link.west_ip|default('')) }}
@@ -103,7 +103,7 @@ nodes:
         {{ interface_link(link.east_port,link.east_ip|default('')) }}
 {%    endif %}
 {%   endfor %}
-      ibgp-links:
+      ibgplinks:
 {%   for link in intbgp %}
 {%    if link.west == node.name %}
 {%     for rid in nodes %}
@@ -125,7 +125,7 @@ nodes:
 {%     endfor %}
 {%    endif %}
 {%   endfor %}
-      ebgp-interfaces:
+      ebgpinterfaces:
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
          {{ interface_link(link.west_port,link.west_ip|default('')) }}
@@ -156,7 +156,7 @@ nodes:
       as:     {{ k }}
 {%     endif %}
 {%   endfor %}
-      ibgp-interfaces:
+      ibgpinterfaces:
 {%   for link in intbgp %}
 {%    if link.west == node.name %}
         {{ interface_link(link.west_port,link.west_ip|default('')) }}
@@ -164,7 +164,7 @@ nodes:
         {{ interface_link(link.east_port,link.east_ip|default('')) }}
 {%    endif %}
 {%   endfor %}
-      ibgp-links:
+      ibgplinks:
 {%   for link in intbgp %}
 {%    if link.west == node.name %}
 {%     for rid in nodes %}
@@ -186,7 +186,7 @@ nodes:
 {%     endfor %}
 {%    endif %}
 {%   endfor %}
-      ebgp-interfaces:
+      ebgpinterfaces:
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
          {{ interface_link(link.west_port,link.west_ip|default('')) }}
