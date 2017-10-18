@@ -1,20 +1,33 @@
 
+
 {% for host,inv in nodes|dictsort %}
-{{ host }}
-!
+{%  if inventory_hostname == host %}
+{{ inventory_hostname }}
 !
  interface loopback 0
   description Router ID
    ip address {{ inv.rid }} 255.255.255.255
 !
-{%  if inv.ibgpinterfaces is defined %}
-{%   for ifname,ifdef in inv.ibgpinterfaces|dictsort %}
-!
+{%   if inv.ebgpinterfaces is defined %}
+{%    for ifname,ifdef in inv.ebgpinterfaces|dictsort %}
  interface {{ ifname }}
-  description This is a IBGP Interface
+   desc eBGP_Int
    ip address {{ ifdef.ip | ipaddr('address') }} 255.255.255.254
  no shut
 !
-{%   endfor %}
+{%    endfor %}
+{%   else %}
+{%   endif %}
+{%   if inv.ibgpinterfaces is defined %}
+{%    for ifname,ifdef in inv.ibgpinterfaces|dictsort %}
+ interface {{ ifname }}
+   desc iBGP_Int
+   ip address {{ ifdef.ip | ipaddr('address') }} 255.255.255.254
+ no shut
+!
+{%    endfor %}
+{%   else %}
+test
+{%   endif %}
 {%  endif %}
 {% endfor %}

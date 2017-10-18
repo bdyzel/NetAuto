@@ -49,7 +49,7 @@ nodes:
 {%      if link.east == rid.name %}
 {%       with %}
 {%        set remoterid = rid.mgmtb %}
-         {{ ibgp_link(link.east, remoterid ) }}
+        {{ ibgp_link(link.east, remoterid ) }}
 {%       endwith %}
 {%      endif %}
 {%     endfor %}
@@ -58,7 +58,7 @@ nodes:
 {%      if link.west == rid.name %}
 {%       with %}
 {%        set remoterid = rid.mgmtb %}
-         {{ ibgp_link(link.west, remoterid ) }}
+        {{ ibgp_link(link.west, remoterid ) }}
 {%       endwith %}
 {%      endif %}
 {%     endfor %}
@@ -67,17 +67,17 @@ nodes:
       ebgpinterfaces:
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
-         {{ interface_link(link.west_port,link.west_ip|default('')) }}
+        {{ interface_link(link.west_port,link.west_ip|default('')) }}
 {%     elif link.east == node.name %}
-         {{ interface_link(link.east_port,link.east_ip|default('')) }}
+        {{ interface_link(link.east_port,link.east_ip|default('')) }}
 {%    endif %}
 {%   endfor %}
       ebgp-links:
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
-         {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}
+        {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}
 {%    elif link.east == node.name %}
-         {{ ebgp_link(link.west, link.west_ip, link.west_as ) }}
+        {{ ebgp_link(link.west, link.west_ip, link.west_as ) }}
 {%    endif %}
 {%   endfor %}
 {%  endif %}
@@ -110,7 +110,7 @@ nodes:
 {%      if link.east == rid.name %}
 {%       with %}
 {%        set remoterid = rid.mgmtb %}
-         {{ ibgp_link(link.east, remoterid ) }}
+        {{ ibgp_link(link.east, remoterid ) }}
 {%       endwith %}
 {%      endif %}
 {%     endfor %}
@@ -119,7 +119,7 @@ nodes:
 {%      if link.west == rid.name %}
 {%       with %}
 {%        set remoterid = rid.mgmtb %}
-         {{ ibgp_link(link.west, remoterid ) }}
+        {{ ibgp_link(link.west, remoterid ) }}
 {%       endwith %}
 {%      endif %}
 {%     endfor %}
@@ -128,17 +128,17 @@ nodes:
       ebgpinterfaces:
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
-         {{ interface_link(link.west_port,link.west_ip|default('')) }}
+        {{ interface_link(link.west_port,link.west_ip|default('')) }}
 {%     elif link.east == node.name %}
-         {{ interface_link(link.east_port,link.east_ip|default('')) }}
+        {{ interface_link(link.east_port,link.east_ip|default('')) }}
 {%    endif %}
 {%   endfor %}
       ebgp-links:
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
-         {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}
+        {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}
 {%    elif link.east == node.name %}
-         {{ ebgp_link(link.west, link.west_ip, link.west_as ) }}
+        {{ ebgp_link(link.west, link.west_ip, link.west_as ) }}
 {%    endif %}
 {%   endfor %}
 {%  endif %}
@@ -171,7 +171,7 @@ nodes:
 {%      if link.east == rid.name %}
 {%       with %}
 {%        set remoterid = rid.mgmtb %}
-         {{ ibgp_link(link.east, remoterid ) }}
+        {{ ibgp_link(link.east, remoterid ) }}
 {%       endwith %}
 {%      endif %}
 {%     endfor %}
@@ -180,7 +180,7 @@ nodes:
 {%      if link.west == rid.name %}
 {%       with %}
 {%        set remoterid = rid.mgmtb %}
-         {{ ibgp_link(link.west, remoterid ) }}
+        {{ ibgp_link(link.west, remoterid ) }}
 {%       endwith %}
 {%      endif %}
 {%     endfor %}
@@ -189,17 +189,17 @@ nodes:
       ebgpinterfaces:
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
-         {{ interface_link(link.west_port,link.west_ip|default('')) }}
+        {{ interface_link(link.west_port,link.west_ip|default('')) }}
 {%     elif link.east == node.name %}
-         {{ interface_link(link.east_port,link.east_ip|default('')) }}
+        {{ interface_link(link.east_port,link.east_ip|default('')) }}
 {%    endif %}
 {%   endfor %}
       ebgp-links:
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
-         {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}
+        {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}
 {%    elif link.east == node.name %}
-         {{ ebgp_link(link.west, link.west_ip, link.west_as ) }}
+        {{ ebgp_link(link.west, link.west_ip, link.west_as ) }}
 {%    endif %}
 {%   endfor %}
 {%  endif %}
