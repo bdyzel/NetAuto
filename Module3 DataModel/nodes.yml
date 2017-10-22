@@ -1,0 +1,183 @@
+#
+# Nodes in the network
+#
+# Under the 'nodes:' there are different sub sections listing either the WAN nodes,
+# Campus Nodes, or the Public Nodes, each individual node has the followin:
+#   * The 'mgmta' IP address, this is the IP address used by ansible
+#   * The 'mgmtb'/'rid' is the loopback IP address, only used when deploying IBGP configuration
+#   * The 'ebgp/ibgp-interfaces' these are the interfaces configured on the node
+#   * The 'ebgp/ibgp-links' lists the details of the remote node being connected to
+#
+# Note!(All IP's are /31 subnets)
+#
+# Abbreviation Index:
+#   mgmt = management
+#   nbr = neighbor
+#   ntype = node type
+
+---
+nodes:
+    R1:
+      mgmta:  172.16.0.11
+      rid:    10.99.0.1
+      type:   wan-node
+      bgpas:     18001
+      eigrpas:     200
+      ibgpinterfaces:
+        Gi3/0: { ip: 10.10.0.1 }
+        Gi4/0: { ip: 10.10.1.1 }
+      ibgplinks:
+        - { ibgp-nbr: CR1, nbr-rid: "10.99.0.5" }
+        - { ibgp-nbr: CR2, nbr-rid: "10.99.0.6" }
+      ebgpinterfaces:
+        Gi1/0: { ip: 10.20.0.1 }
+        Gi2/0: { ip: 10.20.1.1 }
+      ebgplinks:
+        - { ebgp-nbr: PE1, nbr-ip: "10.20.0.0", remote-as: 17001 }
+        - { ebgp-nbr: PE2, nbr-ip: "10.20.1.0", remote-as: 17001 }
+    R2:
+      mgmta:  172.16.0.12
+      rid:    10.99.0.2
+      type:   wan-node
+      bgpas:     18001
+      eigrpas:     200
+      ibgpinterfaces:
+        Gi3/0: { ip: 10.10.0.3 }
+        Gi4/0: { ip: 10.10.1.3 }
+      ibgplinks:
+        - { ibgp-nbr: CR1, nbr-rid: "10.99.0.5" }
+        - { ibgp-nbr: CR2, nbr-rid: "10.99.0.6" }
+      ebgpinterfaces:
+        Gi1/0: { ip: 10.20.0.3 }
+        Gi2/0: { ip: 10.20.1.3 }
+      ebgplinks:
+        - { ebgp-nbr: PE1, nbr-ip: "10.20.0.2", remote-as: 17001 }
+        - { ebgp-nbr: PE2, nbr-ip: "10.20.1.2", remote-as: 17001 }
+    R3:
+      mgmta:  172.16.0.13
+      rid:    10.99.0.3
+      type:   wan-node
+      bgpas:     18001
+      eigrpas:     200
+      ibgpinterfaces:
+        Gi3/0: { ip: 10.10.0.5 }
+        Gi4/0: { ip: 10.10.1.5 }
+      ibgplinks:
+        - { ibgp-nbr: CR1, nbr-rid: "10.99.0.5" }
+        - { ibgp-nbr: CR2, nbr-rid: "10.99.0.6" }
+      ebgpinterfaces:
+        Gi1/0: { ip: 10.20.0.5 }
+        Gi2/0: { ip: 10.20.1.5 }
+      ebgplinks:
+        - { ebgp-nbr: PE1, nbr-ip: "10.20.0.4", remote-as: 17001 }
+        - { ebgp-nbr: PE2, nbr-ip: "10.20.1.4", remote-as: 17001 }
+    R4:
+      mgmta:  172.16.0.14
+      rid:    10.99.0.4
+      type:   wan-node
+      bgpas:     18001
+      eigrpas:     200
+      ibgpinterfaces:
+        Gi3/0: { ip: 10.10.0.7 }
+        Gi4/0: { ip: 10.10.1.7 }
+      ibgplinks:
+        - { ibgp-nbr: CR1, nbr-rid: "10.99.0.5" }
+        - { ibgp-nbr: CR2, nbr-rid: "10.99.0.6" }
+      ebgpinterfaces:
+        Gi1/0: { ip: 10.20.0.7 }
+        Gi2/0: { ip: 10.20.1.7 }
+      ebgplinks:
+        - { ebgp-nbr: PE1, nbr-ip: "10.20.0.6", remote-as: 17001 }
+        - { ebgp-nbr: PE2, nbr-ip: "10.20.1.6", remote-as: 17001 }
+
+    CR1:
+      mgmta:  172.16.0.15
+      rid:    10.99.0.5
+      type:   campus-node
+      as:     18001
+      eigrpas:     200
+      ibgpinterfaces:
+        Gi1/0: { ip: 10.10.0.0 }
+        Gi2/0: { ip: 10.10.0.2 }
+        Gi3/0: { ip: 10.10.0.4 }
+        Gi4/0: { ip: 10.10.0.6 }
+        Gi5/0: { ip: 10.5.0.0 }
+      ibgplinks:
+        - { ibgp-nbr: R1, nbr-rid: "10.99.0.1" }
+        - { ibgp-nbr: R2, nbr-rid: "10.99.0.2" }
+        - { ibgp-nbr: R3, nbr-rid: "10.99.0.3" }
+        - { ibgp-nbr: R4, nbr-rid: "10.99.0.4" }
+        - { ibgp-nbr: CR2, nbr-rid: "10.99.0.6" }
+    CR2:
+      mgmta:  172.16.0.16
+      rid:    10.99.0.6
+      type:   campus-node
+      as:     18001
+      eigrpas:     200
+      ibgpinterfaces:
+        Gi1/0: { ip: 10.10.1.0 }
+        Gi2/0: { ip: 10.10.1.2 }
+        Gi3/0: { ip: 10.10.1.4 }
+        Gi4/0: { ip: 10.10.1.6 }
+        Gi5/0: { ip: 10.5.0.1 }
+      ibgplinks:
+        - { ibgp-nbr: R1, nbr-rid: "10.99.0.1" }
+        - { ibgp-nbr: R2, nbr-rid: "10.99.0.2" }
+        - { ibgp-nbr: R3, nbr-rid: "10.99.0.3" }
+        - { ibgp-nbr: R4, nbr-rid: "10.99.0.4" }
+        - { ibgp-nbr: CR1, nbr-rid: "10.99.0.5" }
+
+    PE1:
+      mgmta:  172.16.0.17
+      rid:    10.199.0.1
+      type:   public-node
+      as:     17001
+      eigrpas:     100
+      ibgpinterfaces:
+        Gi5/0: { ip: 10.20.0.8 }
+      ibgplinks:
+        - { ibgp-nbr: SIM, nbr-rid: "10.199.0.3" }
+      ebgpinterfaces:
+        Gi1/0: { ip: 10.20.0.0 }
+        Gi2/0: { ip: 10.20.0.2 }
+        Gi3/0: { ip: 10.20.0.4 }
+        Gi4/0: { ip: 10.20.0.6 }
+      ebgplinks:
+        - { ebgp-nbr: R1, nbr-ip: "10.20.0.1", remote-as: 18001 }
+        - { ebgp-nbr: R2, nbr-ip: "10.20.0.3", remote-as: 18001 }
+        - { ebgp-nbr: R3, nbr-ip: "10.20.0.5", remote-as: 18001 }
+        - { ebgp-nbr: R4, nbr-ip: "10.20.0.7", remote-as: 18001 }
+    PE2:
+      mgmta:  172.16.0.18
+      rid:    10.199.0.2
+      type:   public-node
+      as:     17001
+      eigrpas:     100
+      ibgpinterfaces:
+        Gi5/0: { ip: 10.20.1.8 }
+      ibgplinks:
+        - { ibgp-nbr: SIM, nbr-rid: "10.199.0.3" }
+      ebgpinterfaces:
+        Gi1/0: { ip: 10.20.1.0 }
+        Gi2/0: { ip: 10.20.1.2 }
+        Gi3/0: { ip: 10.20.1.4 }
+        Gi4/0: { ip: 10.20.1.6 }
+      ebgplinks:
+        - { ebgp-nbr: R1, nbr-ip: "10.20.1.1", remote-as: 18001 }
+        - { ebgp-nbr: R2, nbr-ip: "10.20.1.3", remote-as: 18001 }
+        - { ebgp-nbr: R3, nbr-ip: "10.20.1.5", remote-as: 18001 }
+        - { ebgp-nbr: R4, nbr-ip: "10.20.1.7", remote-as: 18001 }
+    SIM:
+      mgmta:  172.16.0.19
+      rid:    10.199.0.3
+      type:   public-node
+      as:     17001
+      eigrpas:     100
+      ibgpinterfaces:
+        Gi1/0: { ip: 10.20.0.9 }
+        Gi2/0: { ip: 10.20.1.9 }
+      ibgplinks:
+        - { ibgp-nbr: PE1, nbr-rid: "10.199.0.1" }
+        - { ibgp-nbr: PE2, nbr-rid: "10.199.0.2" }
+      ebgpinterfaces:
+      ebgplinks:

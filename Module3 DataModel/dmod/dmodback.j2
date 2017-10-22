@@ -1,0 +1,206 @@
+#
+# Nodes in the network
+#
+# Under the 'nodes:' there are different sub sections listing either the WAN nodes,
+# Campus Nodes, or the Public Nodes, each individual node has the followin:
+#   * The 'mgmta' IP address, this is the IP address used by ansible
+#   * The 'mgmtb'/'rid' is the loopback IP address, only used when deploying IBGP configuration
+#   * The 'ebgp/ibgp-interfaces' these are the interfaces configured on the node
+#   * The 'ebgp/ibgp-links' lists the details of the remote node being connected to
+#
+# Note!(All IP's are /31 subnets)
+#
+# Abbreviation Index:
+#   mgmt = management
+#   nbr = neighbor
+#   ntype = node type
+{% macro interface_link(name,ip) %}
+{{ name }}: { ip: {{ip}} }{% endmacro %}
+{% macro ibgp_link(to,ip) %}
+- { ibgp-nbr: {{to}}, nbr-rid: "{{ip}}" }{% endmacro %}
+{% macro ebgp_link(to,ip,as) %}
+- { ebgp-nbr: {{to}}, nbr-ip: "{{ip}}", remote-as: {{as}} }{% endmacro %}
+
+---
+nodes:
+{% for node in nodes %}
+{%  if node.ntype == 'wan-node' %}
+    {{ node.name }}:
+      mgmta:  {{ node.mgmta }}
+      rid:    {{ node.mgmtb }}
+      type:   {{ node.ntype }}
+{%   for k,v in asn|dictsort() %}
+{%     if node.name in v.members %}
+      as:     {{ k }}
+{%     endif %}
+{%   endfor %}
+      ibgpinterfaces:
+{%   for link in intbgp %}
+{%    if link.west == node.name %}
+        {{ interface_link(link.west_port,link.west_ip|default('')) }}
+{%     elif link.east == node.name %}
+        {{ interface_link(link.east_port,link.east_ip|default('')) }}
+{%    endif %}
+{%   endfor %}
+      ibgplinks:
+{%   for link in intbgp %}
+{%    if link.west == node.name %}
+{%     for rid in nodes %}
+{%      if link.east == rid.name %}
+{%       with %}
+{%        set remoterid = rid.mgmtb %}
+         {{ ibgp_link(link.east, remoterid ) }}
+{%       endwith %}
+{%      endif %}
+{%     endfor %}
+{%    elif link.east == node.name %}
+{%     for rid in nodes %}
+{%      if link.west == rid.name %}
+{%       with %}
+{%        set remoterid = rid.mgmtb %}
+         {{ ibgp_link(link.west, remoterid ) }}
+{%       endwith %}
+{%      endif %}
+{%     endfor %}
+{%    endif %}
+{%   endfor %}
+      ebgpinterfaces:
+{%   for link in extbgp %}
+{%    if link.west == node.name %}
+         {{ interface_link(link.west_port,link.west_ip|default('')) }}
+{%     elif link.east == node.name %}
+         {{ interface_link(link.east_port,link.east_ip|default('')) }}
+{%    endif %}
+{%   endfor %}
+      ebgp-links:
+{%   for link in extbgp %}
+{%    if link.west == node.name %}
+         {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}
+{%    elif link.east == node.name %}
+         {{ ebgp_link(link.west, link.west_ip, link.west_as ) }}
+{%    endif %}
+{%   endfor %}
+{%  endif %}
+{% endfor %}
+
+
+{% for node in nodes %}
+{%  if node.ntype == 'campus-node' %}
+    {{ node.name }}:
+      mgmta:  {{ node.mgmta }}
+      rid:    {{ node.mgmtb }}
+      type:   {{ node.ntype }}
+{%   for k,v in asn|dictsort() %}
+{%     if node.name in v.members %}
+      as:     {{ k }}
+{%     endif %}
+{%   endfor %}
+      ibgpinterfaces:
+{%   for link in intbgp %}
+{%    if link.west == node.name %}
+        {{ interface_link(link.west_port,link.west_ip|default('')) }}
+{%     elif link.east == node.name %}
+        {{ interface_link(link.east_port,link.east_ip|default('')) }}
+{%    endif %}
+{%   endfor %}
+      ibgplinks:
+{%   for link in intbgp %}
+{%    if link.west == node.name %}
+{%     for rid in nodes %}
+{%      if link.east == rid.name %}
+{%       with %}
+{%        set remoterid = rid.mgmtb %}
+         {{ ibgp_link(link.east, remoterid ) }}
+{%       endwith %}
+{%      endif %}
+{%     endfor %}
+{%    elif link.east == node.name %}
+{%     for rid in nodes %}
+{%      if link.west == rid.name %}
+{%       with %}
+{%        set remoterid = rid.mgmtb %}
+         {{ ibgp_link(link.west, remoterid ) }}
+{%       endwith %}
+{%      endif %}
+{%     endfor %}
+{%    endif %}
+{%   endfor %}
+      ebgpinterfaces:
+{%   for link in extbgp %}
+{%    if link.west == node.name %}
+         {{ interface_link(link.west_port,link.west_ip|default('')) }}
+{%     elif link.east == node.name %}
+         {{ interface_link(link.east_port,link.east_ip|default('')) }}
+{%    endif %}
+{%   endfor %}
+      ebgp-links:
+{%   for link in extbgp %}
+{%    if link.west == node.name %}
+         {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}
+{%    elif link.east == node.name %}
+         {{ ebgp_link(link.west, link.west_ip, link.west_as ) }}
+{%    endif %}
+{%   endfor %}
+{%  endif %}
+{% endfor %}
+
+
+{% for node in nodes %}
+{%  if node.ntype == 'public-node' %}
+    {{ node.name }}:
+      mgmta:  {{ node.mgmta }}
+      rid:    {{ node.mgmtb }}
+      type:   {{ node.ntype }}
+{%   for k,v in asn|dictsort() %}
+{%     if node.name in v.members %}
+      as:     {{ k }}
+{%     endif %}
+{%   endfor %}
+      ibgpinterfaces:
+{%   for link in intbgp %}
+{%    if link.west == node.name %}
+        {{ interface_link(link.west_port,link.west_ip|default('')) }}
+{%     elif link.east == node.name %}
+        {{ interface_link(link.east_port,link.east_ip|default('')) }}
+{%    endif %}
+{%   endfor %}
+      ibgplinks:
+{%   for link in intbgp %}
+{%    if link.west == node.name %}
+{%     for rid in nodes %}
+{%      if link.east == rid.name %}
+{%       with %}
+{%        set remoterid = rid.mgmtb %}
+         {{ ibgp_link(link.east, remoterid ) }}
+{%       endwith %}
+{%      endif %}
+{%     endfor %}
+{%    elif link.east == node.name %}
+{%     for rid in nodes %}
+{%      if link.west == rid.name %}
+{%       with %}
+{%        set remoterid = rid.mgmtb %}
+         {{ ibgp_link(link.west, remoterid ) }}
+{%       endwith %}
+{%      endif %}
+{%     endfor %}
+{%    endif %}
+{%   endfor %}
+      ebgpinterfaces:
+{%   for link in extbgp %}
+{%    if link.west == node.name %}
+         {{ interface_link(link.west_port,link.west_ip|default('')) }}
+{%     elif link.east == node.name %}
+         {{ interface_link(link.east_port,link.east_ip|default('')) }}
+{%    endif %}
+{%   endfor %}
+      ebgp-links:
+{%   for link in extbgp %}
+{%    if link.west == node.name %}
+         {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}
+{%    elif link.east == node.name %}
+         {{ ebgp_link(link.west, link.west_ip, link.west_as ) }}
+{%    endif %}
+{%   endfor %}
+{%  endif %}
+{% endfor %}
