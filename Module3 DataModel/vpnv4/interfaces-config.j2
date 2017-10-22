@@ -16,17 +16,16 @@
  no shut
 !
 {%    endfor %}
-{%   else %}
 {%   endif %}
 {%   if inv.ibgpinterfaces is defined %}
 {%    for ifname,ifdef in inv.ibgpinterfaces|dictsort %}
- interface {{ ifname }}
+ interface {{ ifname|default }}
    desc iBGP_Int
    ip address {{ ifdef.ip | ipaddr('address') }} 255.255.255.254
  no shut
 !
 {%    endfor %}
-{%   else %}
+{%   elif inv.ibgpinterfaces|attr is not defined %}
 test
 {%   endif %}
 {%  endif %}

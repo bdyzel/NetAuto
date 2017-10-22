@@ -16,6 +16,6 @@ CR1 ansible_host=172.16.0.15
 CR2 ansible_host=172.16.0.16
 
 [public]
-CR1 ansible_host=172.16.0.17
-CR2 ansible_host=172.16.0.18
+PE1 ansible_host=172.16.0.17
+PE2 ansible_host=172.16.0.18
 SIM ansible_host=172.16.0.19

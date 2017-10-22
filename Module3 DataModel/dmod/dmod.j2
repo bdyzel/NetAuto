@@ -23,17 +23,34 @@
 
 ---
 nodes:
+{# there will be a loop set for each different "type" of node which
+can be seen from the " node.type == 'wan-node' " statement #}
 {% for node in nodes %}
 {%  if node.ntype == 'wan-node' %}
     {{ node.name }}:
       mgmta:  {{ node.mgmta }}
       rid:    {{ node.mgmtb }}
       type:   {{ node.ntype }}
+{# the dictionary sort makes it easier to use specific key/pair values
+ when referencing a specific node inventory details#}
 {%   for k,v in asn|dictsort() %}
 {%     if node.name in v.members %}
-      as:     {{ k }}
+      bgpas:     {{ k }}
 {%     endif %}
 {%   endfor %}
+{%   for t,y in eigrpas|dictsort() %}
+{%     if node.name in y.members %}
+      eigrpas:     {{ t }}
+{%     endif %}
+{%   endfor %}
+{# IBGP interfaces will be used with another filter to generate the node specific
+configuration for only IBGP deployments or changes. See folder /Module3 DataModel/BGP/ibgpconf.j2
+for more details  #}
+{# The filter for the interfaces below are all similar except that "for link in ?intbgp?" where the
+section between the ?? will differ depending on the fabric.yml, or in my case the cloth.yml dictionary
+entry for the different type of interface and the different reference used in the type of interface.
+For instance intbgp or extbgp. Another note is that "interface_link" is macro which can be found at
+the top of this filter #}
       ibgpinterfaces:
 {%   for link in intbgp %}
 {%    if link.west == node.name %}
@@ -72,7 +89,7 @@ nodes:
         {{ interface_link(link.east_port,link.east_ip|default('')) }}
 {%    endif %}
 {%   endfor %}
-      ebgp-links:
+      ebgplinks:
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
         {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}
@@ -82,7 +99,6 @@ nodes:
 {%   endfor %}
 {%  endif %}
 {% endfor %}
-
 
 {% for node in nodes %}
 {%  if node.ntype == 'campus-node' %}
@@ -95,6 +111,11 @@ nodes:
       as:     {{ k }}
 {%     endif %}
 {%   endfor %}
+{%   for t,y in eigrpas|dictsort() %}
+{%     if node.name in y.members %}
+      eigrpas:     {{ t }}
+{%     endif %}
+{%   endfor %}
       ibgpinterfaces:
 {%   for link in intbgp %}
 {%    if link.west == node.name %}
@@ -125,7 +146,11 @@ nodes:
 {%     endfor %}
 {%    endif %}
 {%   endfor %}
+{%  for link in extbgp %}
+{%   if (link.west == node.name or link.east == node.name) %}
       ebgpinterfaces:
+{%   endif %}
+{%  endfor %}
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
         {{ interface_link(link.west_port,link.west_ip|default('')) }}
@@ -133,7 +158,11 @@ nodes:
         {{ interface_link(link.east_port,link.east_ip|default('')) }}
 {%    endif %}
 {%   endfor %}
-      ebgp-links:
+{%  for link in extbgp %}
+{%   if (link.west == node.name or link.east == node.name) %}
+      ebgplinks:
+{%   endif %}
+{%  endfor %}
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
         {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}
@@ -144,7 +173,6 @@ nodes:
 {%  endif %}
 {% endfor %}
 
-
 {% for node in nodes %}
 {%  if node.ntype == 'public-node' %}
     {{ node.name }}:
@@ -154,6 +182,11 @@ nodes:
 {%   for k,v in asn|dictsort() %}
 {%     if node.name in v.members %}
       as:     {{ k }}
+{%     endif %}
+{%   endfor %}
+{%   for t,y in eigrpas|dictsort() %}
+{%     if node.name in y.members %}
+      eigrpas:     {{ t }}
 {%     endif %}
 {%   endfor %}
       ibgpinterfaces:
@@ -194,7 +227,7 @@ nodes:
         {{ interface_link(link.east_port,link.east_ip|default('')) }}
 {%    endif %}
 {%   endfor %}
-      ebgp-links:
+      ebgplinks:
 {%   for link in extbgp %}
 {%    if link.west == node.name %}
         {{ ebgp_link(link.east, link.east_ip, link.east_as ) }}

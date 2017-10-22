@@ -48,6 +48,12 @@ asn:
   17001:
     members: [ PE1,PE2,SIM ]
 
+eigrpas:
+  200:
+    members: [ R1,R2,R3,R4,CR1,CR2 ]
+  100:
+    members: [ PE1,PE2,SIM ]
+
 intbgp:
   - {west: R1, west_as: '18001', west_ip: 10.10.0.1, west_port: Gi3/0,
      east: CR1, east_as: '18001', east_ip: 10.10.0.0, east_port: Gi1/0}
@@ -90,4 +96,4 @@ extbgp:
   - {west: R4, west_as: '18001', west_ip: 10.20.1.7, west_port: Gi2/0,
      east: PE2, east_as: '17001', east_ip: 10.20.1.6, east_port: Gi4/0}
 
-services: [ IPv4, BGP ]
+services: [ IPv4, BGP, EIGRP ]

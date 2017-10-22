@@ -4,4 +4,4 @@
   vars_files: [ nodes.yml ]
   tasks:
   - name:   Create VPNV4 Configuration
-    template: src=VPNV4/interfaces-config.j2 dest='VPNV4/config/{{ inventory_hostname }}vpnv4if.cfg'
+    template: src=EIGRP/eigrp-config.j2 dest='EIGRP/config/{{ inventory_hostname }}-eigrp.cfg'
