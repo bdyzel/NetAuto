@@ -9,3 +9,4 @@ The Ansible VM shares a local host Loopback interfaces which is connected to the
 * ## Modules
 As we progress with the course, each module will have it's own playbooks, lab layout, and resulting information set.
 See relevant Module for more information.
+test
