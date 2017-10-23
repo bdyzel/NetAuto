@@ -17,9 +17,9 @@
 {% macro interface_link(name,ip) %}
 {{ name }}: { ip: {{ip}} }{% endmacro %}
 {% macro ibgp_link(to,ip) %}
-- { ibgp-nbr: {{to}}, nbr-rid: "{{ip}}" }{% endmacro %}
+- { ibgp_nbr: {{to}}, nbr_rid: "{{ip}}" }{% endmacro %}
 {% macro ebgp_link(to,ip,as) %}
-- { ebgp-nbr: {{to}}, nbr-ip: "{{ip}}", remote-as: {{as}} }{% endmacro %}
+- { ebgp_nbr: {{to}}, nbr_ip: "{{ip}}", remote_as: {{as}} }{% endmacro %}
 
 ---
 nodes:
@@ -108,7 +108,7 @@ the top of this filter #}
       type:   {{ node.ntype }}
 {%   for k,v in asn|dictsort() %}
 {%     if node.name in v.members %}
-      as:     {{ k }}
+      bgpas:     {{ k }}
 {%     endif %}
 {%   endfor %}
 {%   for t,y in eigrpas|dictsort() %}
@@ -181,7 +181,7 @@ the top of this filter #}
       type:   {{ node.ntype }}
 {%   for k,v in asn|dictsort() %}
 {%     if node.name in v.members %}
-      as:     {{ k }}
+      bgpas:     {{ k }}
 {%     endif %}
 {%   endfor %}
 {%   for t,y in eigrpas|dictsort() %}

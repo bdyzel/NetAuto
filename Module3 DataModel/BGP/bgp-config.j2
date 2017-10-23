@@ -7,11 +7,9 @@ router bgp {{ inv.bgpas }}
 bgp router-id {{ inv.rid }}
 {%   endif %}
 {%   if inv.ebgplinks is defined %}
-{%    for neighbor in inventory_hostname.ebgplinks %}
- neighbor {{ neighbor.nbr-ip }} remote-as {{ neighbor.remote-as }}
-!
-{%    endfor %}
+{%   for neighbor in inv.ebgplinks|default([]) %}
+ neighbor {{ neighbor.nbr_ip }} remote-as {{ neighbor.remote_as }}
+{%   endfor %}
 {%   endif %}
-!
 {%  endif %}
 {% endfor %}
