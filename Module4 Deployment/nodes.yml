@@ -1,0 +1,190 @@
+#
+# Nodes in the network
+#
+# Under the 'nodes:' there are different sub sections listing either the WAN nodes,
+# Campus Nodes, or the Public Nodes, each individual node has the followin:
+#   * The 'mgmta' IP address, this is the IP address used by ansible
+#   * The 'mgmtb'/'rid' is the loopback IP address, only used when deploying IBGP configuration
+#   * The 'ebgp/ibgp-interfaces' these are the interfaces configured on the node
+#   * The 'ebgp/ibgp-links' lists the details of the remote node being connected to
+#
+# Note!(All IP's are /31 subnets)
+#
+# Abbreviation Index:
+#   mgmt = management
+#   nbr = neighbor
+#   ntype = node type
+
+---
+nodes:
+    R1:
+      mgmta:  172.16.0.11
+      rid:    10.99.0.1
+      type:   wan-node
+      iosver:     15.0
+      bgpas:     18001
+      eigrpas:     200
+      ibgpinterfaces:
+        Gi3/0: { ip: 10.10.0.1 }
+        Gi4/0: { ip: 10.10.1.1 }
+      ibgplinks:
+        - { ibgp_nbr: CR1, nbr_rid: "10.99.0.5" }
+        - { ibgp_nbr: CR2, nbr_rid: "10.99.0.6" }
+      ebgpinterfaces:
+        Gi1/0: { ip: 10.20.0.1 }
+        Gi2/0: { ip: 10.20.1.1 }
+      ebgplinks:
+        - { ebgp_nbr: PE1, nbr_ip: "10.20.0.0", remote_as: 17001 }
+        - { ebgp_nbr: PE2, nbr_ip: "10.20.1.0", remote_as: 17001 }
+    R2:
+      mgmta:  172.16.0.12
+      rid:    10.99.0.2
+      type:   wan-node
+      iosver:     15.0
+      bgpas:     18001
+      eigrpas:     200
+      ibgpinterfaces:
+        Gi3/0: { ip: 10.10.0.3 }
+        Gi4/0: { ip: 10.10.1.3 }
+      ibgplinks:
+        - { ibgp_nbr: CR1, nbr_rid: "10.99.0.5" }
+        - { ibgp_nbr: CR2, nbr_rid: "10.99.0.6" }
+      ebgpinterfaces:
+        Gi1/0: { ip: 10.20.0.3 }
+        Gi2/0: { ip: 10.20.1.3 }
+      ebgplinks:
+        - { ebgp_nbr: PE1, nbr_ip: "10.20.0.2", remote_as: 17001 }
+        - { ebgp_nbr: PE2, nbr_ip: "10.20.1.2", remote_as: 17001 }
+    R3:
+      mgmta:  172.16.0.13
+      rid:    10.99.0.3
+      type:   wan-node
+      iosver:     15.0
+      bgpas:     18001
+      eigrpas:     200
+      ibgpinterfaces:
+        Gi3/0: { ip: 10.10.0.5 }
+        Gi4/0: { ip: 10.10.1.5 }
+      ibgplinks:
+        - { ibgp_nbr: CR1, nbr_rid: "10.99.0.5" }
+        - { ibgp_nbr: CR2, nbr_rid: "10.99.0.6" }
+      ebgpinterfaces:
+        Gi1/0: { ip: 10.20.0.5 }
+        Gi2/0: { ip: 10.20.1.5 }
+      ebgplinks:
+        - { ebgp_nbr: PE1, nbr_ip: "10.20.0.4", remote_as: 17001 }
+        - { ebgp_nbr: PE2, nbr_ip: "10.20.1.4", remote_as: 17001 }
+    R4:
+      mgmta:  172.16.0.14
+      rid:    10.99.0.4
+      type:   wan-node
+      iosver:     15.0
+      bgpas:     18001
+      eigrpas:     200
+      ibgpinterfaces:
+        Gi3/0: { ip: 10.10.0.7 }
+        Gi4/0: { ip: 10.10.1.7 }
+      ibgplinks:
+        - { ibgp_nbr: CR1, nbr_rid: "10.99.0.5" }
+        - { ibgp_nbr: CR2, nbr_rid: "10.99.0.6" }
+      ebgpinterfaces:
+        Gi1/0: { ip: 10.20.0.7 }
+        Gi2/0: { ip: 10.20.1.7 }
+      ebgplinks:
+        - { ebgp_nbr: PE1, nbr_ip: "10.20.0.6", remote_as: 17001 }
+        - { ebgp_nbr: PE2, nbr_ip: "10.20.1.6", remote_as: 17001 }
+
+    CR1:
+      mgmta:  172.16.0.15
+      rid:    10.99.0.5
+      type:   campus-node
+      iosver:     15.0
+      bgpas:     18001
+      eigrpas:     200
+      ibgpinterfaces:
+        Gi1/0: { ip: 10.10.0.0 }
+        Gi2/0: { ip: 10.10.0.2 }
+        Gi3/0: { ip: 10.10.0.4 }
+        Gi4/0: { ip: 10.10.0.6 }
+        Gi5/0: { ip: 10.5.0.0 }
+      ibgplinks:
+        - { ibgp_nbr: R1, nbr_rid: "10.99.0.1" }
+        - { ibgp_nbr: R2, nbr_rid: "10.99.0.2" }
+        - { ibgp_nbr: R3, nbr_rid: "10.99.0.3" }
+        - { ibgp_nbr: R4, nbr_rid: "10.99.0.4" }
+        - { ibgp_nbr: CR2, nbr_rid: "10.99.0.6" }
+    CR2:
+      mgmta:  172.16.0.16
+      rid:    10.99.0.6
+      type:   campus-node
+      iosver:     15.0
+      bgpas:     18001
+      eigrpas:     200
+      ibgpinterfaces:
+        Gi1/0: { ip: 10.10.1.0 }
+        Gi2/0: { ip: 10.10.1.2 }
+        Gi3/0: { ip: 10.10.1.4 }
+        Gi4/0: { ip: 10.10.1.6 }
+        Gi5/0: { ip: 10.5.0.1 }
+      ibgplinks:
+        - { ibgp_nbr: R1, nbr_rid: "10.99.0.1" }
+        - { ibgp_nbr: R2, nbr_rid: "10.99.0.2" }
+        - { ibgp_nbr: R3, nbr_rid: "10.99.0.3" }
+        - { ibgp_nbr: R4, nbr_rid: "10.99.0.4" }
+        - { ibgp_nbr: CR1, nbr_rid: "10.99.0.5" }
+
+    PE1:
+      mgmta:  172.16.0.17
+      rid:    10.199.0.1
+      type:   public-node
+      iosver:     15.0
+      bgpas:     17001
+      eigrpas:     100
+      ibgpinterfaces:
+        Gi5/0: { ip: 10.20.0.8 }
+      ibgplinks:
+        - { ibgp_nbr: SIM, nbr_rid: "10.199.0.3" }
+      ebgpinterfaces:
+        Gi1/0: { ip: 10.20.0.0 }
+        Gi2/0: { ip: 10.20.0.2 }
+        Gi3/0: { ip: 10.20.0.4 }
+        Gi4/0: { ip: 10.20.0.6 }
+      ebgplinks:
+        - { ebgp_nbr: R1, nbr_ip: "10.20.0.1", remote_as: 18001 }
+        - { ebgp_nbr: R2, nbr_ip: "10.20.0.3", remote_as: 18001 }
+        - { ebgp_nbr: R3, nbr_ip: "10.20.0.5", remote_as: 18001 }
+        - { ebgp_nbr: R4, nbr_ip: "10.20.0.7", remote_as: 18001 }
+    PE2:
+      mgmta:  172.16.0.18
+      rid:    10.199.0.2
+      type:   public-node
+      iosver:     15.0
+      bgpas:     17001
+      eigrpas:     100
+      ibgpinterfaces:
+        Gi5/0: { ip: 10.20.1.8 }
+      ibgplinks:
+        - { ibgp_nbr: SIM, nbr_rid: "10.199.0.3" }
+      ebgpinterfaces:
+        Gi1/0: { ip: 10.20.1.0 }
+        Gi2/0: { ip: 10.20.1.2 }
+        Gi3/0: { ip: 10.20.1.4 }
+        Gi4/0: { ip: 10.20.1.6 }
+      ebgplinks:
+        - { ebgp_nbr: R1, nbr_ip: "10.20.1.1", remote_as: 18001 }
+        - { ebgp_nbr: R2, nbr_ip: "10.20.1.3", remote_as: 18001 }
+        - { ebgp_nbr: R3, nbr_ip: "10.20.1.5", remote_as: 18001 }
+        - { ebgp_nbr: R4, nbr_ip: "10.20.1.7", remote_as: 18001 }
+    SIM:
+      mgmta:  172.16.0.19
+      rid:    10.199.0.3
+      type:   public-node
+      iosver:     15.0
+      bgpas:     17001
+      eigrpas:     100
+      ibgpinterfaces:
+        Gi1/0: { ip: 10.20.0.9 }
+        Gi2/0: { ip: 10.20.1.9 }
+      ibgplinks:
+        - { ibgp_nbr: PE1, nbr_rid: "10.199.0.1" }
+        - { ibgp_nbr: PE2, nbr_rid: "10.199.0.2" }

@@ -1,0 +1,6 @@
++router bgp 17001
++ bgp router-id 10.199.0.3
++ neighbor 10.199.0.1 remote-as 17001
++ neighbor 10.199.0.1 update-source loopback 0
++ neighbor 10.199.0.2 remote-as 17001
++ neighbor 10.199.0.2 update-source loopback 0

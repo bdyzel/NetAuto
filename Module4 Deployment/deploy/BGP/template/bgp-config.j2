@@ -1,0 +1,23 @@
+{% for host,inv in nodes|dictsort %}
+{%  if inventory_hostname == host %}
+version {{ inv.iosver }}
+!
+{%   if inv.bgpas is defined %}
+router bgp {{ inv.bgpas }}
+ bgp router-id {{ inv.rid }}
+{%   endif %}
+{%   if inv.ebgplinks is defined %}
+{%    for neighbor in inv.ebgplinks|default([]) %}
+ neighbor {{ neighbor.nbr_ip }} remote-as {{ neighbor.remote_as }}
+{%    endfor %}
+{%   endif %}
+{%   if inv.ibgplinks is defined %}
+{%    for neighbor in inv.ibgplinks|default([]) %}
+ neighbor {{ neighbor.nbr_rid }} remote-as {{ inv.bgpas }}
+ neighbor {{ neighbor.nbr_rid }} update-source loopback 0
+{%    endfor %}
+!
+{%   endif %}
+end
+{%  endif %}
+{% endfor %}

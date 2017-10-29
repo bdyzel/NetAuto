@@ -1,0 +1,4 @@
+---
+#  - include: ../../tools/log-pre-cfg.yml
+  - include: deploy_nap.yml
+#  - include: ../../tools/log-post-cfg.yml

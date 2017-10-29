@@ -1,0 +1,18 @@
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+  vars:
+    timestamp: "{{lookup('pipe','date \"+%Y-%m-%d_%H-%M\"')}}"
+
+  tasks:
+  - name: Get Full Running Configuration
+    ios_command:
+      commands:
+        - "show run"
+    register: fullconf
+
+  - name: Write Full Config to .conf file
+    copy:
+      content: "{{ fullconf.stdout[0] }}"
+      dest: '../deploy/diff/precfg/{{ inventory_hostname }}_{{ timestamp }}_initcfg.conf'

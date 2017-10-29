@@ -1,0 +1,18 @@
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+
+  tasks:
+  - name: "Deploy Configuration"
+    napalm_install_config:
+      hostname: "{{ ansible_host }}"
+      username: "{{ ansible_user }}"
+      dev_os: "{{ os }}"
+      password: "{{ ansible_ssh_pass }}"
+      config_file: "./desiredcfg/{{ inventory_hostname }}.igp.cfg"
+      commit_changes: true
+      replace_config: false
+      get_diffs: true
+      diff_file: "../diff/difflog/{{ inventory_hostname }}.igp.diff"
+#- set_fact: deploy=1

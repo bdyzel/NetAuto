@@ -1,0 +1,40 @@
+#
+# Get Summary BGP Neighbor report
+#
+---
+- include: VRFCheck.yml
+  name:    Get VRF Name
+
+- hosts: all
+  gather_facts: false
+  connection: local
+
+- hosts: all
+  gather_facts: false
+  connection: local
+  name: Get BGP VRF Specific Summary
+  tasks:
+  - ios_command:
+      commands:
+        - "sho ip bgp vpnv4 vrf {{vrf_var}} summary | beg Neighbor"
+    register: BGPVRFSum
+    when: vrf_var !=""
+  - copy:
+      content: "{{ BGPVRFSum.stdout[0] }}"
+      dest: './BGP_Summary/BGPSummary_{{ inventory_hostname }}.conf'
+    when: vrf_var !=""
+
+- hosts: all
+  gather_facts: false
+  connection: local
+  name: Get BGP Specific Summary
+  tasks:
+  - ios_command:
+      commands:
+        - "sho ip bgp summary | beg Neighbor"
+    register: BGPSum
+    when: vrf_var ==""
+  - copy:
+      content: "{{ BGPSum.stdout[0] }}"
+      dest: './BGP_Summary/BGPSummary_{{ inventory_hostname }}.conf'
+    when: vrf_var ==""

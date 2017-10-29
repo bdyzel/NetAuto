@@ -1,0 +1,23 @@
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+
+  tasks:
+  - ios_command:
+      commands:
+        - "show run | inc router bgp"
+    register: vbgpas
+#  - debug: var=vbgpas
+  - set_fact: bgp_as="{% set r = vbgpas.stdout[0] %}{{ r | regex_replace('^.*router bgp\s+(\d+)$','\\1') }}"
+
+  - name: Get BGP Run Configuration
+    ios_command:
+      commands:
+        - "show run partition router BGP {{ bgp_as }}"
+    register: bgpconf
+
+  - name: Save Output to /BGP_Configs
+    copy:
+      content: "{{ bgpconf.stdout[0] }}"
+      dest: './BGP_Configs/BGPconf_{{ inventory_hostname }}.conf'

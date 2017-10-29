@@ -1,0 +1,38 @@
+{% for host,inv in nodes|dictsort %}
+{%  if inventory_hostname == host %}
+version {{ inv.iosver }}
+!
+{%   if inv.ibgpinterfaces is defined %}
+{%    for ifname,ifdef in inv.ibgpinterfaces|dictsort %}
+ip prefix-list PL_{{ inventory_hostname }}_IGP permit {{ ifdef.ip | ipaddr('address') }}/32
+{%    endfor %}
+{%   endif %}
+ip prefix-list PL_{{ inventory_hostname }}_IGP permit {{ inv.rid }}/32
+{%   if inv.ebgpinterfaces is defined %}
+{%    for ifname,ifdef in inv.ebgpinterfaces|dictsort %}
+ip prefix-list PL_{{ inventory_hostname }}_IGP permit {{ ifdef.ip | ipaddr('address') }}/32
+{%    endfor %}
+{%   endif %}
+!
+route-map DIST_LIST_OUT permit
+ match ip address prefix-list PL_{{ inventory_hostname }}_IGP
+!
+{%   if inv.eigrpas is defined %}
+router eigrp {{ inv.eigrpas }}
+ network {{ inv.rid|to_site_wildcard }}0 0.0.0.255
+{%   if inv.ibgpinterfaces is defined %}
+{%    for ifname,ifdef in inv.ibgpinterfaces|dictsort %}
+ network {{ ifdef.ip | ipaddr('address')|to_site_wildcard }}0 0.0.0.255
+{%    endfor %}
+{%   endif %}
+{%   if inv.ebgpinterfaces is defined %}
+{%    for ifname,ifdef in inv.ebgpinterfaces|dictsort %}
+ network {{ ifdef.ip | ipaddr('address')|to_site_wildcard }}0 0.0.0.255
+{%    endfor %}
+{%   endif %}
+ distribute-list route-map DIST_LIST_OUT out
+!
+{%   endif %}
+end
+{%  endif %}
+{% endfor %}

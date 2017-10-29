@@ -1,0 +1,16 @@
++ip prefix-list PL_CR2_IGP permit 10.10.1.0/32
++ip prefix-list PL_CR2_IGP permit 10.10.1.2/32
++ip prefix-list PL_CR2_IGP permit 10.10.1.4/32
++ip prefix-list PL_CR2_IGP permit 10.10.1.6/32
++ip prefix-list PL_CR2_IGP permit 10.5.0.1/32
++ip prefix-list PL_CR2_IGP permit 10.99.0.6/32
++route-map DIST_LIST_OUT permit
++ match ip address prefix-list PL_CR2_IGP
++router eigrp 200
++ network 10.99.0.0 0.0.0.255
++ network 10.10.1.0 0.0.0.255
++ network 10.10.1.0 0.0.0.255
++ network 10.10.1.0 0.0.0.255
++ network 10.10.1.0 0.0.0.255
++ network 10.5.0.0 0.0.0.255
++ distribute-list route-map DIST_LIST_OUT out

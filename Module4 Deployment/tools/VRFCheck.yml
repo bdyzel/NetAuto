@@ -1,0 +1,16 @@
+#
+# Get VRF information from Devices
+# This can be used when running vrf or non vrf commands
+#
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+
+  tasks:
+  - ios_command:
+      commands:
+        - "show run vrf | inc ^ip vrf "
+    register: vrfvar
+  - set_fact: vrf_var="{% set r = vrfvar.stdout[0] %}{{ r | regex_replace('ip vrf ') }}"
+  # - debug: var=vrf_var

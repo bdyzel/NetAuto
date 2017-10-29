@@ -1,0 +1,103 @@
+#
+# Shirts, Pants, and maybe some underwear definitions
+#
+---
+nodes:
+  - name: R1
+    mgmta: 172.16.0.11
+    mgmtb: 10.99.0.1
+    ntype: wan-node
+  - name: R2
+    mgmta: 172.16.0.12
+    mgmtb: 10.99.0.2
+    ntype: wan-node
+  - name: R3
+    mgmta: 172.16.0.13
+    mgmtb: 10.99.0.3
+    ntype: wan-node
+  - name: R4
+    mgmta: 172.16.0.14
+    mgmtb: 10.99.0.4
+    ntype: wan-node
+
+  - name: CR1
+    mgmta: 172.16.0.15
+    mgmtb: 10.99.0.5
+    ntype: campus-node
+  - name: CR2
+    mgmta: 172.16.0.16
+    mgmtb: 10.99.0.6
+    ntype: campus-node
+
+  - name: PE1
+    mgmta: 172.16.0.17
+    mgmtb: 10.199.0.1
+    ntype: public-node
+  - name: PE2
+    mgmta: 172.16.0.18
+    mgmtb: 10.199.0.2
+    ntype: public-node
+  - name: SIM
+    mgmta: 172.16.0.19
+    mgmtb: 10.199.0.3
+    ntype: public-node
+
+asn:
+  18001:
+    members: [ R1,R2,R3,R4,CR1,CR2 ]
+  17001:
+    members: [ PE1,PE2,SIM ]
+
+eigrpas:
+  200:
+    members: [ R1,R2,R3,R4,CR1,CR2 ]
+  100:
+    members: [ PE1,PE2,SIM ]
+
+iosver:
+  15.0:
+    members: [ R1,R2,R3,R4,CR1,CR2,PE1,PE2,SIM ]
+
+intbgp:
+  - {west: R1, west_as: '18001', west_ip: 10.10.0.1, west_port: Gi3/0,
+     east: CR1, east_as: '18001', east_ip: 10.10.0.0, east_port: Gi1/0}
+  - {west: R1, west_as: '18001', west_ip: 10.10.1.1, west_port: Gi4/0,
+     east: CR2, east_as: '18001', east_ip: 10.10.1.0, east_port: Gi1/0}
+  - {west: R2, west_as: '18001', west_ip: 10.10.0.3, west_port: Gi3/0,
+     east: CR1, east_as: '18001', east_ip: 10.10.0.2, east_port: Gi2/0}
+  - {west: R2, west_as: '18001', west_ip: 10.10.1.3, west_port: Gi4/0,
+     east: CR2, east_as: '18001', east_ip: 10.10.1.2, east_port: Gi2/0}
+  - {west: R3, west_as: '18001', west_ip: 10.10.0.5, west_port: Gi3/0,
+     east: CR1, east_as: '18001', east_ip: 10.10.0.4, east_port: Gi3/0}
+  - {west: R3, west_as: '18001', west_ip: 10.10.1.5, west_port: Gi4/0,
+     east: CR2, east_as: '18001', east_ip: 10.10.1.4, east_port: Gi3/0}
+  - {west: R4, west_as: '18001', west_ip: 10.10.0.7, west_port: Gi3/0,
+     east: CR1, east_as: '18001', east_ip: 10.10.0.6, east_port: Gi4/0}
+  - {west: R4, west_as: '18001', west_ip: 10.10.1.7, west_port: Gi4/0,
+     east: CR2, east_as: '18001', east_ip: 10.10.1.6, east_port: Gi4/0}
+  - {west: CR1, west_as: '18001', west_ip: 10.5.0.0, west_port: Gi5/0,
+     east: CR2, east_as: '18001', east_ip: 10.5.0.1, east_port: Gi5/0}
+  - {west: PE1, west_as: '17001', west_ip: 10.20.0.8, west_port: Gi5/0,
+     east: SIM, east_as: '17001', east_ip: 10.20.0.9, east_port: Gi1/0}
+  - {west: PE2, west_as: '17001', west_ip: 10.20.1.8, west_port: Gi5/0,
+     east: SIM, east_as: '17001', east_ip: 10.20.1.9, east_port: Gi2/0}
+
+extbgp:
+  - {west: R1, west_as: '18001', west_ip: 10.20.0.1, west_port: Gi1/0,
+     east: PE1, east_as: '17001', east_ip: 10.20.0.0, east_port: Gi1/0}
+  - {west: R1, west_as: '18001', west_ip: 10.20.1.1, west_port: Gi2/0,
+     east: PE2, east_as: '17001', east_ip: 10.20.1.0, east_port: Gi1/0}
+  - {west: R2, west_as: '18001', west_ip: 10.20.0.3, west_port: Gi1/0,
+     east: PE1, east_as: '17001', east_ip: 10.20.0.2, east_port: Gi2/0}
+  - {west: R2, west_as: '18001', west_ip: 10.20.1.3, west_port: Gi2/0,
+     east: PE2, east_as: '17001', east_ip: 10.20.1.2, east_port: Gi2/0}
+  - {west: R3, west_as: '18001', west_ip: 10.20.0.5, west_port: Gi1/0,
+     east: PE1, east_as: '17001', east_ip: 10.20.0.4, east_port: Gi3/0}
+  - {west: R3, west_as: '18001', west_ip: 10.20.1.5, west_port: Gi2/0,
+     east: PE2, east_as: '17001', east_ip: 10.20.1.4, east_port: Gi3/0}
+  - {west: R4, west_as: '18001', west_ip: 10.20.0.7, west_port: Gi1/0,
+     east: PE1, east_as: '17001', east_ip: 10.20.0.6, east_port: Gi4/0}
+  - {west: R4, west_as: '18001', west_ip: 10.20.1.7, west_port: Gi2/0,
+     east: PE2, east_as: '17001', east_ip: 10.20.1.6, east_port: Gi4/0}
+
+services: [ IPv4, BGP, EIGRP ]

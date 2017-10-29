@@ -1,0 +1,5 @@
+{% if vrf_id is defined %}
+show ip bgp vpnv4 vrf {{vrf_id}} summary
+{% elif vrf_id is not defined%}
+show ip bgp summary
+{% endif %}
